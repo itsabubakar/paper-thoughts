@@ -2,11 +2,15 @@
 @tailwind components;
 @tailwind utilities;
 
+body {
+    background-color: #fdfdfd;
+}
+
 
 /* Navbar sytles */
 
 .link {
-    @apply text-sm lg:text-lg lg:px-2 py-2 hover:text-blue-500 flex gap-2 items-center
+    @apply text-sm lg:text-lg lg:px-2 py-2 hover:text-orange-500 flex gap-2 items-center
 }
 
 .inner-link {
@@ -14,7 +18,7 @@
 }
 
 .inner-link-item {
-    @apply  px-2 py-1  text-gray-800 hover:text-blue-500 
+    @apply  px-2 py-1  text-gray-800 hover:text-orange-500 
 }
 
 .menu {
@@ -22,5 +26,5 @@
 }
 
 .inner-menu-item {
-    @apply  py-1 block  text-gray-600 hover:text-blue-500 capitalize hover:underline decoration-blue-500
+    @apply  py-1 block  text-gray-600 hover:text-orange-500 capitalize hover:underline decoration-orange-500
 }

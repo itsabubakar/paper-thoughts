@@ -8,6 +8,12 @@ const config: Config = {
   ],
   theme: {
     extend: {
+      colors: {
+        'border-color': '#d3d3d3',
+      },
+      screens: {
+        '2lg': '1152px',
+      },
       fontFamily: {
         "body": "var(--font-jost)",
         "headers": "var(--font-syne)"

@@ -1,26 +1,10 @@
-- [] Pick fonts
-- [] Pick colors
+- [x] Pick fonts
+- [x] Pick colors
+- [x] Build Nav bar page
+- [] Build Hero section
+- [] Build home page sections
 - [] Build home page
 - [] Build poet page
 - [] Build inner poet page
 - [] Build author page
 - [] Build inner author page
-
-
-<!-- Headings -->
-Baskerville
-Palatino
-Zapf Chancery
- Barnaby
-
-
-<!-- Body -->
-Palatino
-Arial 
-Garamond
-Helvetica
-Kirimomi Swash
-
-<!-- Color -->
-hover: e81c23
-text highlight: e81c23

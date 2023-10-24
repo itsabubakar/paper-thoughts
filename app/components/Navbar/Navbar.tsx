@@ -53,23 +53,23 @@ const Navbar = (props: Props) => {
                 </div>
 
                 <Link href={'/'} className="lg:mr-20">
-                    <h1 className="text-center md:text-2xl underline decoration-blue-500">PaperThoughts</h1>
-                    <p className="font-body text-sm underline decoration-blue-500">Where words come to life</p>
+                    <h1 className="text-center md:text-2xl underline decoration-orange-500">PaperThoughts</h1>
+                    <p className="font-body text-sm underline decoration-orange-500">Where words come to life</p>
                 </Link>
 
                 <div className="flex gap-5 items-center">
                     {/* socials */}
                     <div className="hidden md:block">
                         <ul className="flex gap-3 items-center">
-                            <li><Link href={'/'}><AiOutlineInstagram className="hover:text-blue-500" size={25} /></Link></li>
-                            <li><Link href={'/'}><AiOutlineYoutube className="hover:text-blue-500" size={25} /></Link></li>
-                            <li><Link href={'/'}><FaXTwitter className="hover:text-blue-500" size={22} /></Link></li>
+                            <li><Link href={'/'}><AiOutlineInstagram className="hover:text-orange-500" size={25} /></Link></li>
+                            <li><Link href={'/'}><AiOutlineYoutube className="hover:text-orange-500" size={25} /></Link></li>
+                            <li><Link href={'/'}><FaXTwitter className="hover:text-orange-500" size={22} /></Link></li>
                         </ul>
                     </div>
 
                     {/* donate */}
                     <div className="mr-2 hidden lg:block">
-                        <button className="border-2 border-blue-500 rounded-2xl px-4 py-2 hover:text-gray-500 hover:border-blue-300 text-sm"><Link href={'/'}>Donate</Link></button>
+                        <button className="border-2 border-orange-500 rounded px-4 py-2 hover:text-gray-500 hover:border-orange-300 text-sm"><Link href={'/'}>Donate</Link></button>
                     </div>
 
                     {/* Menu & Search */}
@@ -134,9 +134,9 @@ const Navbar = (props: Props) => {
                                             <h2 className="pb-3 font-medium uppercase">Follow Us</h2>
 
                                             <ul className="flex gap-3 items-center">
-                                                <li><Link href={'/'}><AiOutlineInstagram className="hover:text-blue-500" size={25} /></Link></li>
-                                                <li><Link href={'/'}><AiOutlineYoutube className="hover:text-blue-500" size={25} /></Link></li>
-                                                <li><Link href={'/'}><FaXTwitter className="hover:text-blue-500" size={22} /></Link></li>
+                                                <li><Link href={'/'}><AiOutlineInstagram className="hover:text-orange-500" size={25} /></Link></li>
+                                                <li><Link href={'/'}><AiOutlineYoutube className="hover:text-orange-500" size={25} /></Link></li>
+                                                <li><Link href={'/'}><FaXTwitter className="hover:text-orange-500" size={22} /></Link></li>
                                             </ul>
                                         </div>
                                     </div>
