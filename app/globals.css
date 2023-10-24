@@ -1,3 +1,26 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+
+/* Navbar sytles */
+
+.link {
+    @apply text-sm lg:text-lg lg:px-2 py-2 hover:text-blue-500 flex gap-2 items-center
+}
+
+.inner-link {
+    @apply text-black flex flex-col -z-50 bg-white absolute px-5 py-2 duration-300 transition-all ease-in-out shadow-[0_8px_30px_rgb(0,0,0,0.12)] w-44
+}
+
+.inner-link-item {
+    @apply  px-2 py-1  text-gray-800 hover:text-blue-500 
+}
+
+.menu {
+    @apply  md:right-6 text-black -z-50 bg-white absolute  duration-300 transition-all ease-in-out shadow-[0_8px_30px_rgb(0,0,0,0.12)]  
+}
+
+.inner-menu-item {
+    @apply  py-1 block  text-gray-600 hover:text-blue-500 capitalize hover:underline decoration-blue-500
+}
