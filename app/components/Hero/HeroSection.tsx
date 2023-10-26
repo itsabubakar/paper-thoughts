@@ -13,8 +13,8 @@ const HeroSection = (props: Props) => {
                     <Link href={'/'} className="font-medium hover:text-orange-500">In Culture /</Link>
                 </div>
                 <div className="uppercase flex gap-4 justify-center">
-                    <button className=" w-32 text-sm font-medium hover:bg-white hover:text-black hover:border-2 hover:border-orange-500 shadow-black px-4 py-2 bg-orange-500 text-white">Read</button>
-                    <button className="flex gap-1 items-center border-2 border-orange-500 px-4 py-2 w-32 text-sm font-medium hover:shadow-2xl shadow-black hover:bg-orange-500 hover:text-white"><BsBookmarks size={15} />Read Later</button>
+                    <button className="duration-200 ease-in  w-32 text-sm font-medium hover:bg-white hover:text-black hover:border-2 hover:border-orange-500 shadow-black px-4 py-2 bg-orange-500 text-white">Read</button>
+                    <button className="duration-200 ease-in flex gap-1 items-center border-2 border-orange-500 px-4 py-2 w-32 text-sm font-medium hover:shadow-2xl shadow-black hover:bg-orange-500 hover:text-white"><BsBookmarks size={15} />Read Later</button>
                 </div>
             </div>
 

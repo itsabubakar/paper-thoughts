@@ -53,8 +53,8 @@ const Navbar = (props: Props) => {
                 </div>
 
                 <Link href={'/'} className="lg:mr-20">
-                    <h1 className="text-center md:text-2xl underline decoration-orange-500">PaperThoughts</h1>
-                    <p className="font-body text-sm underline decoration-orange-500">Where words come to life</p>
+                    <h1 className="text-center md:text-2xl underline decoration-orange-500 font-headers">PaperThoughts</h1>
+                    <p className="font-headers text-sm underline decoration-orange-500">Where words come to life</p>
                 </Link>
 
                 <div className="flex gap-5 items-center">
@@ -77,13 +77,13 @@ const Navbar = (props: Props) => {
                     <div className="ml-2  ">
                         <div className="flex gap-5">
                             <button><Link href={'/'}><AiOutlineSearch size={26} /></Link></button>
-                            <button onClick={() => setMenu(!menu)}><Link href={'/'}>
+                            <button onClick={() => setMenu(!menu)}>
                                 {menu ? <AiOutlineClose size={26} /> : <AiOutlineMenu size={26} />}
-                            </Link></button>
+                            </button>
 
                             {/* Menu */}
                             <div className={`hidden md:flex  md:w-[600px] top-0 p-10 rounded-lg menu  ${menu ? 'top-20' : ' top-[-600%]'}`}>
-                                <div className=" md:flex md:justify-between hidden">
+                                <div className="w-full md:flex justify-between hidden">
                                     <NavItem
                                         title={'Explore'}
                                         linkItem={['Articles', 'book reviews', 'Poems', 'Poets', 'Short Stories', 'Authors']}

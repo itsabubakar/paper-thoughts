@@ -4,7 +4,13 @@
 
 body {
     background-color: #fdfdfd;
+    
 }
+
+body ::selection {
+    background: black;
+    color: #fdfdfd;
+  }
 
 
 /* Navbar sytles */

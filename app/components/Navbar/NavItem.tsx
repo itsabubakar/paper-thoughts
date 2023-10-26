@@ -6,7 +6,7 @@ type Props = {
 }
 const NavItem = ({ title, linkItem }: Props) => {
     return (
-        <div className="md:px-5">
+        <div className="">
             <h2 className="pb-3 uppercase font-medium">{title}</h2>
             <ul>
                 {
