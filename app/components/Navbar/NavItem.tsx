@@ -1,17 +1,26 @@
 import Link from "next/link"
+import { useContext } from "react";
+import { AppContext } from "../../Context";
 
 type Props = {
-    title: string,
-    linkItem: string[]
+    title: string
+    links: {
+        href: string;
+        label: string;
+    }[]
 }
-const NavItem = ({ title, linkItem }: Props) => {
+const NavItem = ({ title, links }: Props) => {
+    const { menu, setMenu } = useContext(AppContext)
+
+
     return (
         <div className="">
             <h2 className="pb-3 uppercase font-medium">{title}</h2>
             <ul>
                 {
-                    linkItem.map((item, index) => (
-                        <li key={index}><Link className="inner-menu-item" href={'/'}>{item}</Link></li>
+                    links.map((link, index) => (
+                        <li key={index}><Link onClick={() => setMenu(!menu)
+                        } className="inner-menu-item" href={link.href} >{link.label}</Link></li>
                     ))
                 }
             </ul>

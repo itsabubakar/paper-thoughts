@@ -1,15 +1,27 @@
 "use client"
 import Link from "next/link"
-import { useState } from "react"
+import { useContext, useState } from "react"
 import { AiOutlineMenu, AiOutlineSearch, AiOutlineYoutube, AiOutlineInstagram, AiOutlineDown, AiOutlineClose, AiOutlineUp } from 'react-icons/ai'
 import { FaXTwitter } from 'react-icons/fa6'
 import NavItem from "./NavItem"
+import { AppContext } from "../../Context"
+
+const navlinks = [
+    { title: 'Explore', links: { linkName: { href: "/", label: "Hey you" }, foo: { href: "/", label: "Something else" }, } },
+    { title: 'About us', links: { linkName: { href: "/", label: "Index" }, } },
+    { title: 'Activities', links: { linkName: { href: "/", label: "Index" }, } },
+    { title: 'Support us', links: { linkName: { href: "/", label: "Index" }, } },
+];
+
+let arr = [{ href: '/', label: 'Articles' }, { href: '/', label: 'book reviews' }, { href: '/', label: 'Poems' }, { href: '/', label: 'Poets' }, { href: '/', label: 'Short Stories' }, { href: '/', label: 'Authors' }]
+
+
 
 type Props = {}
 const Navbar = (props: Props) => {
     const [poetsLink, setPoetsLink] = useState(false)
     const [authorsLink, setAuthorsLink] = useState(false)
-    const [menu, setMenu] = useState(false)
+    const { menu, setMenu } = useContext(AppContext)
 
     return (
         <nav className="font-headers fixed top-0 block w-full z-20 max-h-[72px] bg-white border-b border-b-gray-100 shadow-lg">
@@ -85,22 +97,22 @@ const Navbar = (props: Props) => {
                             <div className={`hidden md:flex  md:w-[600px] top-0 p-10 rounded-lg menu  ${menu ? 'top-20' : ' top-[-600%]'}`}>
                                 <div className="w-full md:flex justify-between hidden">
                                     <NavItem
-                                        title={'Explore'}
-                                        linkItem={['Articles', 'book reviews', 'Poems', 'Poets', 'Short Stories', 'Authors']}
+                                        title={"Explore"}
+                                        links={[{ href: '/articles', label: 'Articles' }, { href: '/', label: 'book reviews' }, { href: '/', label: 'Poems' }, { href: '/', label: 'Poets' }, { href: '/', label: 'Short Stories' }, { href: '/', label: 'Authors' }]}
                                     />
                                     <NavItem
-                                        title={'Activities'}
-                                        linkItem={['events', 'contests']}
+                                        title={"'About Us"}
+                                        links={[{ href: '/', label: 'who we are' }, { href: '/', label: 'people' }, { href: '/', label: 'contact us' },]}
                                     />
                                     <NavItem
-                                        title={'About Us'}
-                                        linkItem={['who we are', 'people', 'contact us']}
+                                        title={"Activities"}
+                                        links={[{ href: '/', label: 'events' }, { href: '/', label: 'contests' }]}
+                                    />
+                                    <NavItem
+                                        title={"Support Us"}
+                                        links={[{ href: '/', label: 'submit piece' }, { href: '/', label: 'donate' }]}
                                     />
 
-                                    <NavItem
-                                        title={'Support Us'}
-                                        linkItem={['Donate']}
-                                    />
                                 </div>
 
 
@@ -112,23 +124,22 @@ const Navbar = (props: Props) => {
 
                                     <div className="flex flex-col gap-y-8">
                                         <NavItem
-                                            title={'Explore'}
-                                            linkItem={['Articles', 'book reviews', 'Poems', 'Poets', 'Short Stories', 'Authors']}
+                                            title={"Explore"}
+                                            links={[{ href: '/articles', label: 'Articles' }, { href: '/', label: 'book reviews' }, { href: '/', label: 'Poems' }, { href: '/', label: 'Poets' }, { href: '/', label: 'Short Stories' }, { href: '/', label: 'Authors' }]}
                                         />
                                         <NavItem
-                                            title={'Activities'}
-                                            linkItem={['events', 'contests']}
+                                            title={"Activities"}
+                                            links={[{ href: '/', label: 'events' }, { href: '/', label: 'contests' }]}
                                         />
                                     </div>
                                     <div className="flex flex-col gap-y-8 ">
                                         <NavItem
-                                            title={'About Us'}
-                                            linkItem={['who we are', 'people', 'contact us']}
+                                            title={"'About Us"}
+                                            links={[{ href: '/', label: 'who we are' }, { href: '/', label: 'people' }, { href: '/', label: 'contact us' },]}
                                         />
-
                                         <NavItem
-                                            title={'Support Us'}
-                                            linkItem={['Donate']}
+                                            title={"Support Us"}
+                                            links={[{ href: '/', label: 'submit piece' }, { href: '/', label: 'donate' }]}
                                         />
                                         <div className="">
                                             <h2 className="pb-3 font-medium uppercase">Follow Us</h2>

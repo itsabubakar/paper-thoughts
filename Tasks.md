@@ -1,10 +1,23 @@
 - [x] Pick fonts
 - [x] Pick colors
 - [x] Build Nav bar page
-- [] Build Hero section
-- [] Build home page sections
-- [] Build home page
-- [] Build poet page
-- [] Build inner poet page
+- [x] Build Hero section
+- [x] Build home page sections
+- [x] Build home page
+- [x] Replace div to sections where sections should be home page
+- [] Build small section showing small part of article on home page page
+- [] Build article page
+- [] Add context api and pass navbar state and close it after a link is clicked
+- [] Build book review page
+- [] Build poems page
+- [] Build short stories page
+- [] Build event page
+- [] Build contests page
+- [] Build who we are page
+- [] Build people page
+- [] Build contact poet page
+- [] Build donate poet page
 - [] Build author page
 - [] Build inner author page
+- [] Add terms of use page
+- [] Add privacy policy
