@@ -7,13 +7,12 @@ import ShortStorySection from "./components/ShortStories/ShortStorySection";
 
 export default function Home() {
   return (
-    <main className="mx-auto max-w-6xl px-5 2lg:px-0">
+    <main className="">
       <HeroSection />
       <ArticleSection />
       <BookReviewSection />
       <ShortStorySection />
       <PoemSection />
-      <Footer />
     </main>
   )
 }

@@ -3,6 +3,7 @@ import { Jost, Syne } from 'next/font/google'
 import './globals.css'
 import Navbar from './components/Navbar/Navbar'
 import Context from './Context';
+import Footer from './components/Footer/Footer';
 
 
 const syne = Syne({
@@ -31,8 +32,9 @@ export default function RootLayout({
       <Context>
         <body className={`${jost.variable} ${syne.variable} `}>
           <Navbar />
-          <div className='pt-5 z-1'>
+          <div className='pt-20 z-1 mx-auto max-w-6xl px-5 xl:px-0'>
             {children}
+            <Footer />
           </div>
         </body>
       </Context>

@@ -5,12 +5,12 @@
 - [x] Build home page sections
 - [x] Build home page
 - [x] Replace div to sections where sections should be home page
-- [] Build small section showing small part of article on home page page
-- [] Build article page
-- [] Add context api and pass navbar state and close it after a link is clicked
-- [] Build book review page
-- [] Build poems page
-- [] Build short stories page
+- [x] Build small section showing small part of article on home page page
+- [x] Build article page
+- [x] Add context api and pass navbar state and close it after a link is clicked
+- [x] Build book review page
+- [x] Build poems page
+- [x] Build short stories page
 - [] Build event page
 - [] Build contests page
 - [] Build who we are page

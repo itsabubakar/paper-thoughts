@@ -4,7 +4,7 @@ import { BsBookmarks } from 'react-icons/bs'
 type Props = {}
 const HeroSection = (props: Props) => {
     return (
-        <div className="pt-16 flex justify-center">
+        <div className="flex justify-center">
             <div className="max-w-3xl px-5 md:px-0 text-center py-20">
                 <p className="uppercase pb-4 font-medium">Featured article</p>
                 <h2 className=" text-3xl md:text-5xl lg:text-7xl font-semibold">Lorem ipsum dolor sit amet.dolor sit amet.</h2>

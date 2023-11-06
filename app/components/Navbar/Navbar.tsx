@@ -13,7 +13,6 @@ const navlinks = [
     { title: 'Support us', links: { linkName: { href: "/", label: "Index" }, } },
 ];
 
-let arr = [{ href: '/', label: 'Articles' }, { href: '/', label: 'book reviews' }, { href: '/', label: 'Poems' }, { href: '/', label: 'Poets' }, { href: '/', label: 'Short Stories' }, { href: '/', label: 'Authors' }]
 
 
 
@@ -98,11 +97,11 @@ const Navbar = (props: Props) => {
                                 <div className="w-full md:flex justify-between hidden">
                                     <NavItem
                                         title={"Explore"}
-                                        links={[{ href: '/articles', label: 'Articles' }, { href: '/', label: 'book reviews' }, { href: '/', label: 'Poems' }, { href: '/', label: 'Poets' }, { href: '/', label: 'Short Stories' }, { href: '/', label: 'Authors' }]}
+                                        links={[{ href: '/articles', label: 'Articles' }, { href: '/book-review', label: 'book reviews' }, { href: '/poems', label: 'Poems' }, { href: '/poets', label: 'Poets' }, { href: '/short-stories', label: 'Short Stories' }, { href: '/authors', label: 'Authors' }]}
                                     />
                                     <NavItem
-                                        title={"'About Us"}
-                                        links={[{ href: '/', label: 'who we are' }, { href: '/', label: 'people' }, { href: '/', label: 'contact us' },]}
+                                        title={"About Us"}
+                                        links={[{ href: '/who-we-are', label: 'who we are' }, { href: '/contact', label: 'contact us' },]}
                                     />
                                     <NavItem
                                         title={"Activities"}

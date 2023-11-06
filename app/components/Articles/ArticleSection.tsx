@@ -1,11 +1,13 @@
 import Link from "next/link"
 import Article from "./Article"
 
-type Props = {}
+type Props = {
+
+}
 const ArticleSection = (props: Props) => {
     return (
         <div className="pb-10 ">
-            <h2 className=" uppercase font-bold font-headers bg-black text-white  py-2 px-2 ">RECENT  articles</h2>
+            <h2 className=" uppercase font-bold font-headers bg-black text-white  py-2 px-2 ">RECENT articles</h2>
             <Article />
             <Article />
             <Article />
