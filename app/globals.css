@@ -20,11 +20,11 @@ body ::selection {
 }
 
 .inner-link {
-    @apply text-black flex flex-col -z-50 bg-white absolute px-5 py-2 duration-300 transition-all ease-in-out shadow-[0_8px_30px_rgb(0,0,0,0.12)] w-44
+    @apply text-black flex flex-col -z-50 bg-white absolute px-5 py-2 duration-300 transition-all ease-in-out shadow-[0_8px_30px_rgb(0,0,0,0.12)] w-44 pb-3
 }
 
 .inner-link-item {
-    @apply  px-2 py-1  text-gray-800 hover:text-orange-500 
+    @apply border-b   px-2 py-1  text-gray-800 hover:text-orange-500 
 }
 
 .menu {

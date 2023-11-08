@@ -6,16 +6,6 @@ import { FaXTwitter } from 'react-icons/fa6'
 import NavItem from "./NavItem"
 import { AppContext } from "../../Context"
 
-const navlinks = [
-    { title: 'Explore', links: { linkName: { href: "/", label: "Hey you" }, foo: { href: "/", label: "Something else" }, } },
-    { title: 'About us', links: { linkName: { href: "/", label: "Index" }, } },
-    { title: 'Activities', links: { linkName: { href: "/", label: "Index" }, } },
-    { title: 'Support us', links: { linkName: { href: "/", label: "Index" }, } },
-];
-
-
-
-
 type Props = {}
 const Navbar = (props: Props) => {
     const [poetsLink, setPoetsLink] = useState(false)
@@ -24,8 +14,8 @@ const Navbar = (props: Props) => {
 
     return (
         <nav className="font-headers fixed top-0 block w-full z-20 max-h-[72px] bg-white border-b border-b-gray-100 shadow-lg">
-            <div className="max-w-7xl mx-auto flex justify-between  px-5 min-h-[72px] items-center bg-white border-b border-b-gray-100 font-medium">
-                <div className="flex gap-4">
+            <div className="max-w-7xl mx-auto flex  px-5 min-h-[72px] items-center bg-white border-b border-b-gray-100 font-medium justify-between">
+                <div className="flex gap-4 ">
                     <div><Link className="link font-semibold lg:font-medium" href={'/'}>Submit</Link></div>
 
                     {/* Poets */}
@@ -40,8 +30,8 @@ const Navbar = (props: Props) => {
                             setPoetsLink(!poetsLink)
                         }} className="link">Poems & Poets {poetsLink ? <AiOutlineUp size={12} /> : <AiOutlineDown size={12} />}</button>
                         <div className={`inner-link ${poetsLink ? 'top-[74px]' : ' top-[-200%]'}`}>
-                            <Link className="inner-link-item " href={'/'}>Poems</Link>
-                            <Link className="inner-link-item" href={'/'}>Poets</Link>
+                            <Link onClick={() => setAuthorsLink(false)} className="inner-link-item " href={'/poems'}>Poems</Link>
+                            <Link onClick={() => setAuthorsLink(false)} className="inner-link-item" href={'/poets'}>Poets</Link>
                         </div>
                     </div>
 
@@ -57,18 +47,18 @@ const Navbar = (props: Props) => {
                             setAuthorsLink(!authorsLink)
                         }} className="link">Stories & Authors {authorsLink ? <AiOutlineUp size={12} /> : <AiOutlineDown size={12} />}</button>
                         <div className={`inner-link ${authorsLink ? 'top-[74px]' : ' top-[-200%]'}`}>
-                            <Link className="inner-link-item" href={'/'}>Short Stories</Link>
-                            <Link className="inner-link-item" href={'/'}>Authors</Link>
+                            <Link onClick={() => setAuthorsLink(false)} className="inner-link-item" href={'/short-stories'}>Short Stories</Link>
+                            <Link onClick={() => setAuthorsLink(false)} className="inner-link-item" href={'/authors'}>Authors</Link>
                         </div>
                     </div>
                 </div>
 
-                <Link href={'/'} className="lg:mr-20">
+                <Link href={'/'} className="  lg:mr-40">
                     <h1 className="text-center md:text-2xl underline decoration-orange-500 font-headers">PaperThoughts</h1>
-                    <p className="font-headers text-sm underline decoration-orange-500">Where words come to life</p>
+                    <p className="font-headers text-sm underline decoration-orange-500 text-center">Where words come to life</p>
                 </Link>
 
-                <div className="flex gap-5 items-center">
+                <div className="flex gap-5 items-center ">
                     {/* socials */}
                     <div className="hidden md:block">
                         <ul className="flex gap-3 items-center">
@@ -79,9 +69,9 @@ const Navbar = (props: Props) => {
                     </div>
 
                     {/* donate */}
-                    <div className="mr-2 hidden lg:block">
+                    {/* <div className="mr-2 hidden lg:block">
                         <button className="border-2 border-orange-500 rounded px-4 py-2 hover:text-gray-500 hover:border-orange-300 text-sm"><Link href={'/'}>Donate</Link></button>
-                    </div>
+                    </div> */}
 
                     {/* Menu & Search */}
 
@@ -105,11 +95,13 @@ const Navbar = (props: Props) => {
                                     />
                                     <NavItem
                                         title={"Activities"}
-                                        links={[{ href: '/', label: 'events' }, { href: '/', label: 'contests' }]}
+                                        links={[{ href: '/events', label: 'events' }]}
                                     />
                                     <NavItem
                                         title={"Support Us"}
-                                        links={[{ href: '/', label: 'submit piece' }, { href: '/', label: 'donate' }]}
+                                        links={[{ href: '/', label: 'submit piece' },
+                                            //  { href: '/', label: 'donate' }
+                                        ]}
                                     />
 
                                 </div>
@@ -128,7 +120,7 @@ const Navbar = (props: Props) => {
                                         />
                                         <NavItem
                                             title={"Activities"}
-                                            links={[{ href: '/', label: 'events' }, { href: '/', label: 'contests' }]}
+                                            links={[{ href: '/events', label: 'events' }]}
                                         />
                                     </div>
                                     <div className="flex flex-col gap-y-8 ">
@@ -138,7 +130,10 @@ const Navbar = (props: Props) => {
                                         />
                                         <NavItem
                                             title={"Support Us"}
-                                            links={[{ href: '/', label: 'submit piece' }, { href: '/', label: 'donate' }]}
+                                            links={[{ href: '/', label: 'submit piece' }
+                                                //  { href: '/', label: 'donate' }
+                                            ]
+                                            }
                                         />
                                         <div className="">
                                             <h2 className="pb-3 font-medium uppercase">Follow Us</h2>

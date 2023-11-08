@@ -7,7 +7,7 @@ const page = (props: Props) => {
     return (
         <SectionWrapper>
             <h2 className=" uppercase font-bold font-headers bg-orange-500 text-white  py-2 px-2 ">recent  poems</h2>
-            <div className="pt-14 grid sm:grid-cols-3 md:grid-cols-3 gap-5 md:gap-y-14">
+            <div className="pt-14 grid sm:grid-cols-3 md:grid-cols-3 gap-5 md:gap-y-14 justify-center">
                 <PoemLink />
                 <PoemLink />
                 <PoemLink />

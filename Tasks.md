@@ -11,10 +11,14 @@
 - [x] Build book review page
 - [x] Build poems page
 - [x] Build short stories page
-- [] Build event page
-- [] Build contests page
-- [] Build who we are page
-- [] Build people page
+- [x] Build event page
+- [] Turn socials into a component
+- [] add login and create account
+- [] build submit article page
+- [] build login page
+- [] build login out page
+- [] build profile page with user details
+- [x] Build who we are page
 - [] Build contact poet page
 - [] Build donate poet page
 - [] Build author page
