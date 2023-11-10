@@ -6,7 +6,7 @@ import { FaXTwitter } from "react-icons/fa6"
 type Props = {}
 const Footer = (props: Props) => {
     return (
-        <div className="w-full border-t border-t-gray-900 py-8">
+        <div className="w-full border-t border-t-gray-700 py-8">
 
             <Link href={'/'} className="pb-6 block">
                 <h1 className="text-center md:text-2xl underline decoration-orange-500 font-headers">PaperThoughts</h1>

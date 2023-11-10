@@ -12,16 +12,22 @@
 - [x] Build poems page
 - [x] Build short stories page
 - [x] Build event page
+- [x] Build event page
+- [x] Build author page
+- [x] Build who we are page
+- [] Build inner event page
+- [] Build inner poem page
+- [] Build inner poet page
+- [] Build inner book review page
+- [] Build inner author page
 - [] Turn socials into a component
+- [] add sharing functionalities
 - [] add login and create account
 - [] build submit article page
 - [] build login page
 - [] build login out page
 - [] build profile page with user details
-- [x] Build who we are page
 - [] Build contact poet page
-- [] Build donate poet page
-- [] Build author page
-- [] Build inner author page
 - [] Add terms of use page
 - [] Add privacy policy
+- [] Add sitemaps
