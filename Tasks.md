@@ -15,19 +15,18 @@
 - [x] Build event page
 - [x] Build author page
 - [x] Build who we are page
-- [] Build inner event page
-- [] Build inner poem page
-- [] Build inner poet page
-- [] Build inner book review page
-- [] Build inner author page
-- [] Turn socials into a component
-- [] add sharing functionalities
-- [] add login and create account
-- [] build submit article page
+- [x] Build inner event page
+- [x] Build inner poem page
+- [x] Build inner poet page
+- [x] Build inner author page
+- [x] Turn socials into a component
+- [x] Build inner book review page
+- [] Build inner short story page
 - [] build login page
-- [] build login out page
+- [] build sign in page
+- [] build submit article page
+- [] add sharing functionalities
 - [] build profile page with user details
-- [] Build contact poet page
 - [] Add terms of use page
 - [] Add privacy policy
 - [] Add sitemaps

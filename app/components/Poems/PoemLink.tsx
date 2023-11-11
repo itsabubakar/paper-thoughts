@@ -12,7 +12,7 @@ const PoemLink = (props: Props) => {
                     <p className="text-lg font-body pb-3 ">lorem ipsum lorem lore lorem</p>
                     <p className="text-lg font-body  pb-3">lorem ipsum lorem lore lorem velit magnam repellat necessitatibus deserunt omnis cum. Sunt perspiciatis hic vitae assumenda possimus officiis, nemo dignissimos fugit et?</p>
                     <p className="text-lg font-body  pb-3">lorem ipsum lorem lore lorem Lorem ipsum, dolor sit amet consectetur adipisicing elit. Porro odio, error facere </p>
-                    <Link className="capitalize font-headers block mt-5 underline hover:text-orange-500 font-semibold text-center" href={'/'}>read more</Link>
+                    <Link className="capitalize font-headers block mt-5 underline hover:text-orange-500 font-semibold text-center" href={'/poems/1'}>read more</Link>
                 </div>
             </div>
         </div>

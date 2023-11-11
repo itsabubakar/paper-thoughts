@@ -3,8 +3,7 @@
 import RelatedArticle from "@/app/components/Articles/RelatedArticle";
 import Link from "next/link";
 import { MdOutlineArrowBackIosNew } from 'react-icons/md'
-import { AiOutlineMail, AiOutlineInstagram, AiOutlinePrinter } from 'react-icons/ai'
-import { FaXTwitter } from 'react-icons/fa6'
+import Share from "@/app/components/utils/Share";
 
 const page = ({
     params,
@@ -33,11 +32,8 @@ const page = ({
                     {/* author */}
                     <p className="uppercase font-body tracking-wider">By <Link className="underline transition-all duration-200 hover:text-orange-500 hover:no-underline" href={'/'}>Sadiq Bilyamin</Link></p>
                     {/* share */}
-                    <div className="flex pt-3 sm:pt-0">
-                        <Link className="border p-2 border-gray-200 hover:text-orange-500" href={'/'}><FaXTwitter className="" size={22} /></Link>
-                        <Link className="border p-2 border-gray-200  hover:text-orange-500" href={'/'}><AiOutlineInstagram className="" size={22} /></Link>
-                        <Link className="border p-2 border-gray-200  hover:text-orange-500" href={'/'}><AiOutlineMail className="" size={22} /></Link>
-                        <Link className="border p-2 border-gray-200  hover:text-orange-500" href={'/'}> <AiOutlinePrinter className="" size={22} /></Link>
+                    <div className=" pt-3 sm:pt-0">
+                        <Share />
 
                     </div>
 
