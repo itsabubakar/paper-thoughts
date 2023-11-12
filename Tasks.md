@@ -21,12 +21,14 @@
 - [x] Build inner author page
 - [x] Turn socials into a component
 - [x] Build inner book review page
-- [] Build inner short story page
-- [] build login page
-- [] build sign in page
-- [] build submit article page
+- [x] Build inner short story page
+- [x] build login page
+- [x] build sign in page
+- [] add login and sign up to navbar
+- [] build write article page
 - [] add sharing functionalities
 - [] build profile page with user details
+- [] remove semi colon in navbar mobile
 - [] Add terms of use page
 - [] Add privacy policy
 - [] Add sitemaps

@@ -16,7 +16,7 @@ const Navbar = (props: Props) => {
         <nav className="font-headers fixed top-0 block w-full z-20 max-h-[72px] bg-white border-b border-b-gray-100 shadow-lg">
             <div className="max-w-7xl mx-auto flex  px-5 min-h-[72px] items-center bg-white border-b border-b-gray-100 font-medium justify-between">
                 <div className="flex gap-4 ">
-                    <div><Link className="link font-semibold lg:font-medium" href={'/'}>Submit</Link></div>
+                    <div><Link className="link font-semibold lg:font-medium" href={'signup'}>Join</Link></div>
 
                     {/* Poets */}
                     <div className="lg:block hidden">
@@ -111,7 +111,7 @@ const Navbar = (props: Props) => {
 
                             {/* Mobile menu */}
                             <div className={`  md:hidden right-5 left-5 top-0 p-10 rounded-lg text-black -z-50 bg-white absolute  duration-300 transition-all ease-in-out shadow-[0_8px_30px_rgb(0,0,0,0.12)]    ${menu ? 'top-20' : ' top-[-600%]'}`}>
-                                <div className=" md:hidden flex justify-between">
+                                <div className=" md:hidden flex justify-between sm:justify-evenly">
 
                                     <div className="flex flex-col gap-y-8">
                                         <NavItem
