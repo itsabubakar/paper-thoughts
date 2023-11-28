@@ -24,11 +24,16 @@
 - [x] Build inner short story page
 - [x] build login page
 - [x] build sign in page
-- [] add login and sign up to navbar
+- [x] add login and sign up to navbar
+- [x] build profile page with user details - short stories, poems, articles, bookmarks
+- [x] build profile component for navbar
+- [] clean up mobile navbar
+- [] add the details to inner nav
+- [] start connecting stuffs to firebase
 - [] build write article page
 - [] add sharing functionalities
-- [] build profile page with user details
-- [] remove semi colon in navbar mobile
+- [x] remove semi colon in navbar mobile
+- [] Add analytics
 - [] Add terms of use page
 - [] Add privacy policy
 - [] Add sitemaps

@@ -1,6 +1,6 @@
-import SectionWrapper from "../components/Section/SectionWrapper"
-import Event from "../components/events/Event"
-import Pagination from "../components/utils/Pagination"
+import SectionWrapper from "../_components/Section/SectionWrapper"
+import Event from "../_components/Events/Event"
+import Pagination from "../_components/utils/Pagination"
 
 type Props = {}
 const page = (props: Props) => {

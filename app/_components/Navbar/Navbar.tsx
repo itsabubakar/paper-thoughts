@@ -6,6 +6,7 @@ import { FaXTwitter } from 'react-icons/fa6'
 import NavItem from "./NavItem"
 import { AppContext } from "../../Context"
 
+
 type Props = {}
 const Navbar = (props: Props) => {
     const [poetsLink, setPoetsLink] = useState(false)
@@ -16,57 +17,18 @@ const Navbar = (props: Props) => {
         <nav className="font-headers fixed top-0 block w-full z-20 max-h-[72px] bg-white border-b border-b-gray-100 shadow-lg">
             <div className="max-w-7xl mx-auto flex  px-5 min-h-[72px] items-center bg-white border-b border-b-gray-100 font-medium justify-between">
                 <div className="flex gap-4 ">
-                    <div><Link className="link font-semibold lg:font-medium" href={'signup'}>Join</Link></div>
+                    <div><Link className="link font-semibold lg:font-medium" href={'signup'}>Write</Link></div>
 
-                    {/* Poets */}
-                    <div className="lg:block hidden">
-                        <button onClick={() => {
-                            if (authorsLink) {
-                                setAuthorsLink(false)
-                            }
-                            if (poetsLink) {
-                                setPoetsLink(false)
-                            }
-                            setPoetsLink(!poetsLink)
-                        }} className="link">Poems & Poets {poetsLink ? <AiOutlineUp size={12} /> : <AiOutlineDown size={12} />}</button>
-                        <div className={`inner-link ${poetsLink ? 'top-[74px]' : ' top-[-200%]'}`}>
-                            <Link onClick={() => setAuthorsLink(false)} className="inner-link-item " href={'/poems'}>Poems</Link>
-                            <Link onClick={() => setAuthorsLink(false)} className="inner-link-item" href={'/poets'}>Poets</Link>
-                        </div>
-                    </div>
 
-                    {/* Authors */}
-                    <div className="lg:block hidden">
-                        <button onClick={() => {
-                            if (poetsLink) {
-                                setPoetsLink(false)
-                            }
-                            if (authorsLink) {
-                                setAuthorsLink(false)
-                            }
-                            setAuthorsLink(!authorsLink)
-                        }} className="link">Stories & Authors {authorsLink ? <AiOutlineUp size={12} /> : <AiOutlineDown size={12} />}</button>
-                        <div className={`inner-link ${authorsLink ? 'top-[74px]' : ' top-[-200%]'}`}>
-                            <Link onClick={() => setAuthorsLink(false)} className="inner-link-item" href={'/short-stories'}>Short Stories</Link>
-                            <Link onClick={() => setAuthorsLink(false)} className="inner-link-item" href={'/authors'}>Authors</Link>
-                        </div>
-                    </div>
                 </div>
 
-                <Link href={'/'} className="  lg:mr-40">
+                <Link href={'/'} className="">
                     <h1 className="text-center md:text-2xl underline decoration-orange-500 font-headers">PaperThoughts</h1>
                     <p className="font-headers text-sm underline decoration-orange-500 text-center">Where words come to life</p>
                 </Link>
 
                 <div className="flex gap-5 items-center ">
-                    {/* socials */}
-                    <div className="hidden md:block">
-                        <ul className="flex gap-3 items-center">
-                            <li><Link href={'/'}><AiOutlineInstagram className="hover:text-orange-500" size={25} /></Link></li>
-                            <li><Link href={'/'}><AiOutlineYoutube className="hover:text-orange-500" size={25} /></Link></li>
-                            <li><Link href={'/'}><FaXTwitter className="hover:text-orange-500" size={22} /></Link></li>
-                        </ul>
-                    </div>
+
 
                     {/* donate */}
                     {/* <div className="mr-2 hidden lg:block">
@@ -75,7 +37,14 @@ const Navbar = (props: Props) => {
 
                     {/* Menu & Search */}
 
-                    <div className="ml-2  ">
+                    <div>
+                        <Link href={'/account'} className="text-white py-1 px-2 bg-black rounded-full block">
+                            AS
+                        </Link>
+
+                    </div>
+
+                    <div className="  ">
                         <div className="flex gap-5">
                             <button><Link href={'/'}><AiOutlineSearch size={26} /></Link></button>
                             <button onClick={() => setMenu(!menu)}>
@@ -83,7 +52,7 @@ const Navbar = (props: Props) => {
                             </button>
 
                             {/* Menu */}
-                            <div className={`hidden md:flex  md:w-[600px] top-0 p-10 rounded-lg menu  ${menu ? 'top-20' : ' top-[-600%]'}`}>
+                            <div className={`hidden md:block  md:w-[600px] top-0 p-10 rounded-lg menu  ${menu ? 'top-20' : ' top-[-600%]'}`}>
                                 <div className="w-full md:flex justify-between hidden">
                                     <NavItem
                                         title={"Explore"}
@@ -106,7 +75,10 @@ const Navbar = (props: Props) => {
 
                                 </div>
 
-
+                                <div className="flex gap-10 px-2 justify-around pt-4">
+                                    <Link onClick={() => setMenu(!menu)} href={'/signup'} className="border border-orange-500 capitalize text-center py-1 bg-orange-500 text-white px-5 w-2/3 rounded-2xl hover:border-border-color hover:text-gray-800 hover:bg-white transition duration-200"> sign up</Link>
+                                    <Link onClick={() => setMenu(!menu)} href={'/login'} className="border border-orange-500 capitalize text-center py-1 bg-orange-500 text-white px-5 w-2/3 rounded-2xl hover:border-border-color hover:text-gray-800 hover:bg-white transition duration-200">login</Link>
+                                </div>
                             </div>
 
                             {/* Mobile menu */}
@@ -125,7 +97,7 @@ const Navbar = (props: Props) => {
                                     </div>
                                     <div className="flex flex-col gap-y-8 ">
                                         <NavItem
-                                            title={"'About Us"}
+                                            title={"About Us"}
                                             links={[{ href: '/', label: 'who we are' }, { href: '/', label: 'people' }, { href: '/', label: 'contact us' },]}
                                         />
                                         <NavItem
@@ -147,6 +119,10 @@ const Navbar = (props: Props) => {
                                     </div>
 
 
+                                </div>
+                                <div className="flex gap-10 px-2 justify-around pt-8">
+                                    <Link onClick={() => setMenu(!menu)} href={'/signup'} className="border border-orange-500 capitalize text-center py-1 bg-orange-500 text-white px-5 w-2/3 rounded-2xl hover:border-border-color hover:text-gray-800 hover:bg-white transition duration-200"> sign up</Link>
+                                    <Link onClick={() => setMenu(!menu)} href={'/login'} className="border border-orange-500 capitalize text-center py-1 bg-orange-500 text-white px-5 w-2/3 rounded-2xl hover:border-border-color hover:text-gray-800 hover:bg-white transition duration-200">login</Link>
                                 </div>
                             </div>
 

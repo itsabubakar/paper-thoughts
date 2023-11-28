@@ -1,6 +1,6 @@
-import PoemLink from "../components/Poems/PoemLink"
-import SectionWrapper from "../components/Section/SectionWrapper"
-import Pagination from "../components/utils/Pagination"
+import PoemLink from "../_components/Poems/PoemLink"
+import SectionWrapper from "../_components/Section/SectionWrapper"
+import Pagination from "../_components/utils/Pagination"
 
 type Props = {}
 const page = (props: Props) => {

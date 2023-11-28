@@ -2,8 +2,8 @@
 
 import Link from "next/link";
 import { MdOutlineArrowBackIosNew } from 'react-icons/md'
-import Share from "@/app/components/utils/Share";
-import RelatedArticle from "@/app/components/Articles/RelatedArticle";
+import Share from "@/app/_components/utils/Share";
+import RelatedArticle from "@/app/_components/Articles/RelatedArticle";
 
 const page = ({
     params,

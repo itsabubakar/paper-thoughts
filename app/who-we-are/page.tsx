@@ -1,4 +1,4 @@
-import SectionWrapper from "../components/Section/SectionWrapper"
+import SectionWrapper from "../_components/Section/SectionWrapper"
 
 type Props = {}
 const page = (props: Props) => {

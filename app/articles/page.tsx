@@ -1,7 +1,7 @@
-import Article from "../components/Articles/Article"
-import ArticleSection from "../components/Articles/ArticleSection"
-import SectionWrapper from "../components/Section/SectionWrapper"
-import Pagination from "../components/utils/Pagination"
+import Article from "../_components/Articles/Article"
+import ArticleSection from "../_components/Articles/ArticleSection"
+import SectionWrapper from "../_components/Section/SectionWrapper"
+import Pagination from "../_components/utils/Pagination"
 
 type Props = {}
 const page = (props: Props) => {

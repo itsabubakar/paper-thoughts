@@ -1,4 +1,4 @@
-import Share from "@/app/components/utils/Share";
+import Share from "@/app/_components/utils/Share";
 import Link from "next/link";
 import { MdOutlineArrowBackIosNew } from "react-icons/md";
 

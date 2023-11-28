@@ -1,9 +1,9 @@
 'use client'
 
-import RelatedArticle from "@/app/components/Articles/RelatedArticle";
+import RelatedArticle from "@/app/_components/Articles/RelatedArticle";
 import Link from "next/link";
 import { MdOutlineArrowBackIosNew } from 'react-icons/md'
-import Share from "@/app/components/utils/Share";
+import Share from "@/app/_components/utils/Share";
 import Image from "next/image";
 
 const page = ({

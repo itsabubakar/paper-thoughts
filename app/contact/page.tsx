@@ -1,5 +1,5 @@
 import { AiOutlineInstagram, AiOutlineYoutube } from "react-icons/ai"
-import SectionWrapper from "../components/Section/SectionWrapper"
+import SectionWrapper from "../_components/Section/SectionWrapper"
 import Link from "next/link"
 import { FaXTwitter } from "react-icons/fa6"
 

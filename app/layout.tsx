@@ -1,9 +1,9 @@
 import type { Metadata } from 'next'
 import { Jost, Syne } from 'next/font/google'
 import './globals.css'
-import Navbar from './components/Navbar/Navbar'
+import Navbar from './_components/Navbar/Navbar'
 import Context from './Context';
-import Footer from './components/Footer/Footer';
+import Footer from './_components/Footer/Footer';
 
 
 const syne = Syne({

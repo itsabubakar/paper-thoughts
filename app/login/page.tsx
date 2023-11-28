@@ -15,11 +15,11 @@ const page = (props: Props) => {
                 <div className="">
                     <a href="#" className="transition duration-200 hover:text-black flex font-body items-center justify-center space-x-2 text-white my-2 py-2 bg-black hover:bg-gray-200 rounded">
                         <FcGoogle size={23} />
-                        <span>Sign up with Google</span>
+                        <span>Sign in with Google</span>
                     </a>
                     <a href="#" className="transition duration-200 hover:text-black flex font-body items-center justify-center space-x-2  my-2 py-2 bg-black text-white hover:bg-gray-200 rounded">
                         <AiFillApple size={23} />
-                        <span>Sign up with Apple</span>
+                        <span>Sign in with Apple</span>
                     </a>
 
                 </div>
@@ -49,7 +49,7 @@ const page = (props: Props) => {
                     <input type="submit" value="Login" className="py-3 bg-orange-500 text-white w-full rounded hover:bg-black transition duration-200" />
                 </div>
             </form>
-            <a className="" href="signup" data-test="Link"><span className="block  p-5 text-center text-gray-700   ">Don't have an account?</span></a>
+            <a className="" href="signup" data-test="Link"><span className="block  p-5 text-center text-gray-700   ">Don&apos;t have an account?</span></a>
         </div>
 
 

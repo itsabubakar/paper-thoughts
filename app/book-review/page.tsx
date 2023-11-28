@@ -1,6 +1,6 @@
-import BookReview from "../components/BookReviews/BookReview"
-import SectionWrapper from "../components/Section/SectionWrapper"
-import Pagination from "../components/utils/Pagination"
+import BookReview from "../_components/BookReviews/BookReview"
+import SectionWrapper from "../_components/Section/SectionWrapper"
+import Pagination from "../_components/utils/Pagination"
 
 type Props = {}
 const page = (props: Props) => {

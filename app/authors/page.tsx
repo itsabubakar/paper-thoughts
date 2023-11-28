@@ -1,6 +1,6 @@
-import Author from "../components/Authors/Author"
-import SectionWrapper from "../components/Section/SectionWrapper"
-import Pagination from "../components/utils/Pagination"
+import Author from "../_components/Authors/Author"
+import SectionWrapper from "../_components/Section/SectionWrapper"
+import Pagination from "../_components/utils/Pagination"
 
 type Props = {}
 const page = (props: Props) => {

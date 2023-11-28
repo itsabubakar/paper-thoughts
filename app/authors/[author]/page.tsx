@@ -2,8 +2,8 @@
 
 import Link from "next/link";
 import { MdOutlineArrowBackIosNew } from 'react-icons/md'
-import Share from "@/app/components/utils/Share";
-import RelatedArticle from "@/app/components/Articles/RelatedArticle";
+import Share from "@/app/_components/utils/Share";
+import RelatedArticle from "@/app/_components/Articles/RelatedArticle";
 
 const page = ({
     params,
@@ -39,7 +39,7 @@ const page = ({
             </section>
 
             <section className="pb-6">
-                <h3 className=" py-2 font-semibold capitalize font-headers border-t">Sadiq Bilyamin's socials</h3>
+                <h3 className=" py-2 font-semibold capitalize font-headers border-t">Sadiq Bilyamin&apos;s socials</h3>
                 <Share />
             </section>
 

@@ -1,6 +1,6 @@
-import SectionWrapper from "../components/Section/SectionWrapper"
-import StoryLink from "../components/ShortStories/StoryLink"
-import Pagination from "../components/utils/Pagination"
+import SectionWrapper from "../_components/Section/SectionWrapper"
+import StoryLink from "../_components/ShortStories/StoryLink"
+import Pagination from "../_components/utils/Pagination"
 
 type Props = {}
 const page = (props: Props) => {
