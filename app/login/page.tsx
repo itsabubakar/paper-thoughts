@@ -13,7 +13,7 @@ import { auth } from "@/firebase"
 
 
 type Props = {}
-const page = (props: Props) => {
+const Page = (props: Props) => {
     const { googleSignIn, user } = useContext(AppContext)
     const router = useRouter();
 
@@ -92,4 +92,4 @@ const page = (props: Props) => {
     </div>
 
 }
-export default page
+export default Page

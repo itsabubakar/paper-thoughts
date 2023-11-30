@@ -4,7 +4,7 @@ import SectionWrapper from "../_components/Section/SectionWrapper"
 import Pagination from "../_components/utils/Pagination"
 
 type Props = {}
-const page = (props: Props) => {
+const Page = (props: Props) => {
     return (
         <main className="">
             <SectionWrapper>
@@ -22,4 +22,4 @@ const page = (props: Props) => {
         </main>
     )
 }
-export default page
+export default Page

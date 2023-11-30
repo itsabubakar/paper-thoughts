@@ -3,7 +3,7 @@ import SectionWrapper from "../_components/Section/SectionWrapper"
 import Pagination from "../_components/utils/Pagination"
 
 type Props = {}
-const page = (props: Props) => {
+const Page = (props: Props) => {
     return (
         <SectionWrapper>
             <h2 className="uppercase font-bold font-headers bg-orange-500 text-white py-2 px-2">
@@ -24,4 +24,4 @@ const page = (props: Props) => {
         </SectionWrapper>
     )
 }
-export default page
+export default Page

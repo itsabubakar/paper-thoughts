@@ -6,7 +6,7 @@ import { MdOutlineArrowBackIosNew } from 'react-icons/md'
 import Share from "@/app/_components/utils/Share";
 import Image from "next/image";
 
-const page = ({
+const Page = ({
     params,
 }: {
     params: { book: string };
@@ -75,4 +75,4 @@ const page = ({
         </div>
     )
 }
-export default page
+export default Page

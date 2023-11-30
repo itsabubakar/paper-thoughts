@@ -2,7 +2,7 @@ import SectionWrapper from "../_components/Section/SectionWrapper"
 import PoetsName from "../_components/Poetry/PoetsName"
 
 type Props = {}
-const page = (props: Props) => {
+const Page = (props: Props) => {
     return (
         <SectionWrapper>
             <h2 className=" uppercase font-bold font-headers bg-black text-white  py-2 px-2 ">poets</h2>
@@ -17,4 +17,4 @@ const page = (props: Props) => {
         </SectionWrapper>
     )
 }
-export default page
+export default Page

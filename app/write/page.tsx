@@ -6,7 +6,7 @@ import { useRouter } from 'next/navigation'
 
 
 type Props = {}
-const page = (props: Props) => {
+const Page = (props: Props) => {
     const { user } = useContext(AppContext)
     const router = useRouter();
 
@@ -21,4 +21,4 @@ const page = (props: Props) => {
         </div>
     )
 }
-export default page
+export default Page

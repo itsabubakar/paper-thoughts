@@ -10,7 +10,7 @@ import { onAuthStateChanged } from "firebase/auth"
 import { auth } from "@/firebase"
 
 type Props = {}
-const page = (props: Props) => {
+const Page = (props: Props) => {
     const router = useRouter();
     const { googleSignIn, user } = useContext(AppContext)
 
@@ -100,4 +100,4 @@ const page = (props: Props) => {
     </div>
 
 }
-export default page
+export default Page

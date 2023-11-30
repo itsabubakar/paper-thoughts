@@ -3,7 +3,7 @@ import Link from "next/link";
 import { MdOutlineArrowBackIosNew } from "react-icons/md";
 
 type Props = {}
-const page = ({
+const Page = ({
     params,
 }: {
     params: { event: string };
@@ -48,4 +48,4 @@ const page = ({
         </div>
     )
 }
-export default page
+export default Page

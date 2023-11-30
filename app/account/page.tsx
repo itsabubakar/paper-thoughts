@@ -11,7 +11,7 @@ import { AppContext } from "../Context";
 import { useRouter } from "next/navigation";
 
 type Props = {}
-const page = (props: Props) => {
+const Page = (props: Props) => {
     const [activeTab, setActiveTab] = useState('shortStories');
     const [isModalOpen, setIsModalOpen] = useState(false);
     const { logout } = useContext(AppContext)
@@ -160,4 +160,4 @@ const page = (props: Props) => {
         </div>
     )
 }
-export default page
+export default Page

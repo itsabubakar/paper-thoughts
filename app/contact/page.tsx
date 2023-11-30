@@ -4,7 +4,7 @@ import Link from "next/link"
 import { FaXTwitter } from "react-icons/fa6"
 
 type Props = {}
-const page = (props: Props) => {
+const Page = (props: Props) => {
     return (
         <SectionWrapper>
             <h2 className="rounded uppercase font-bold font-headers bg-black text-white  py-2 px-2 ">Contact us</h2>
@@ -40,4 +40,4 @@ const page = (props: Props) => {
         </SectionWrapper>
     )
 }
-export default page
+export default Page
