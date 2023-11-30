@@ -1,5 +1,5 @@
 import SectionWrapper from "../_components/Section/SectionWrapper"
-import PoetsName from "../_components/Poetry/PoetsName"
+import PoetsName from "../_components/Poetry/PoetName"
 
 type Props = {}
 const Page = (props: Props) => {
