@@ -1,30 +1,39 @@
 "use client"
 import Link from "next/link"
-import { useContext, useState } from "react"
+import { useContext, useEffect, useState } from "react"
 import { AiOutlineMenu, AiOutlineSearch, AiOutlineYoutube, AiOutlineInstagram, AiOutlineDown, AiOutlineClose, AiOutlineUp } from 'react-icons/ai'
 import { FaXTwitter } from 'react-icons/fa6'
 import NavItem from "./NavItem"
 import { AppContext } from "../../Context"
 
 
+
 type Props = {}
 const Navbar = (props: Props) => {
     const [poetsLink, setPoetsLink] = useState(false)
     const [authorsLink, setAuthorsLink] = useState(false)
-    const { menu, setMenu } = useContext(AppContext)
+    const { menu, setMenu, user } = useContext(AppContext)
+    const [loading, setLoading] = useState(true)
+
+    useEffect(() => {
+        const checkAuthentication = async () => {
+            await new Promise((resolve) => setTimeout(resolve, 50))
+            setLoading(false)
+        }
+        checkAuthentication()
+    }, [user])
 
     return (
         <nav className="font-headers fixed top-0 block w-full z-20 max-h-[72px] bg-white border-b border-b-gray-100 shadow-lg">
-            <div className="max-w-7xl mx-auto flex  px-5 min-h-[72px] items-center bg-white border-b border-b-gray-100 font-medium justify-between">
-                <div className="flex gap-4 ">
-                    <div><Link className="link font-semibold lg:font-medium" href={'signup'}>Write</Link></div>
-
-
+            <div className="max-w-7xl mx-auto flex  px-5 min-h-[72px] items-center bg-white border-b border-b-gray-100 font-medium ">
+                <div className=" ">
+                    <div><Link className=" link font-semibold lg:font-medium !hidden md:!block" href={user ? '/write' : '/login'}>Write</Link></div>
+                    <div><Link className="md:hidden link font-semibold lg:font-medium" href={user ? '/write' : '/signin'}>{user ? 'Write' : 'Get Started'}</Link></div>
                 </div>
 
-                <Link href={'/'} className="">
+                <Link href={'/'} className="mx-auto">
                     <h1 className="text-center md:text-2xl underline decoration-orange-500 font-headers">PaperThoughts</h1>
-                    <p className="font-headers text-sm underline decoration-orange-500 text-center">Where words come to life</p>
+                    <p className="font-headers text-xs underline decoration-orange-500 text-center">Where words come to life</p>
                 </Link>
 
                 <div className="flex gap-5 items-center ">
@@ -37,12 +46,19 @@ const Navbar = (props: Props) => {
 
                     {/* Menu & Search */}
 
-                    <div>
-                        <Link href={'/account'} className="text-white py-1 px-2 bg-black rounded-full block">
-                            AS
-                        </Link>
+                    {loading ? null : !user ? (
+                        <div className="  px-2 hidden md:flex items-center">
+                            <Link onClick={() => setMenu(!menu)} href={'/signup'} className=" capitalize text-center py-1  px-5  rounded-2xl hover:border-border-color hover:text-gray-500 transition duration-200 underline hover:decoration-orange-500"> sign up</Link>
+                            <Link onClick={() => setMenu(!menu)} href={'/login'} className=" capitalize text-center py-1  px-5  rounded-2xl hover:border-border-color hover:text-gray-500 transition duration-200 underline hover:decoration-orange-500">login</Link>
+                        </div>
+                    ) : (
+                        <div>
+                            <Link href={'/account'} className="text-white py-1 px-2 bg-black rounded-full block capitalize">
+                                {user.email}
+                            </Link>
 
-                    </div>
+                        </div>
+                    )}
 
                     <div className="  ">
                         <div className="flex gap-5">
@@ -75,10 +91,7 @@ const Navbar = (props: Props) => {
 
                                 </div>
 
-                                <div className="flex gap-10 px-2 justify-around pt-4">
-                                    <Link onClick={() => setMenu(!menu)} href={'/signup'} className="border border-orange-500 capitalize text-center py-1 bg-orange-500 text-white px-5 w-2/3 rounded-2xl hover:border-border-color hover:text-gray-800 hover:bg-white transition duration-200"> sign up</Link>
-                                    <Link onClick={() => setMenu(!menu)} href={'/login'} className="border border-orange-500 capitalize text-center py-1 bg-orange-500 text-white px-5 w-2/3 rounded-2xl hover:border-border-color hover:text-gray-800 hover:bg-white transition duration-200">login</Link>
-                                </div>
+
                             </div>
 
                             {/* Mobile menu */}
@@ -120,10 +133,7 @@ const Navbar = (props: Props) => {
 
 
                                 </div>
-                                <div className="flex gap-10 px-2 justify-around pt-8">
-                                    <Link onClick={() => setMenu(!menu)} href={'/signup'} className="border border-orange-500 capitalize text-center py-1 bg-orange-500 text-white px-5 w-2/3 rounded-2xl hover:border-border-color hover:text-gray-800 hover:bg-white transition duration-200"> sign up</Link>
-                                    <Link onClick={() => setMenu(!menu)} href={'/login'} className="border border-orange-500 capitalize text-center py-1 bg-orange-500 text-white px-5 w-2/3 rounded-2xl hover:border-border-color hover:text-gray-800 hover:bg-white transition duration-200">login</Link>
-                                </div>
+
                             </div>
 
 

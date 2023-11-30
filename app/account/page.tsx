@@ -1,18 +1,56 @@
 'use client';
 import Link from "next/link";
-import { useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { AiOutlineInstagram, AiOutlineMail, AiOutlinePrinter } from "react-icons/ai";
 import { FaXTwitter } from "react-icons/fa6";
 import Article from "../_components/Articles/Article";
 import PoemLink from "../_components/Poems/PoemLink";
+import Modal from "react-modal";
+import EditProfileForm from "../_components/Modal/EditProfileForm";
+import { AppContext } from "../Context";
+import { useRouter } from "next/navigation";
 
 type Props = {}
 const page = (props: Props) => {
     const [activeTab, setActiveTab] = useState('shortStories');
+    const [isModalOpen, setIsModalOpen] = useState(false);
+    const { logout } = useContext(AppContext)
+    const { user } = useContext(AppContext)
+    const router = useRouter();
+
+    useEffect(() => {
+        if (!user)
+            router.push('/login')
+    }, [user])
+
+
 
     const handleTabClick = (tab: string) => {
         setActiveTab(tab);
     };
+
+    const openModal = () => {
+        setIsModalOpen(true);
+        console.log('test function');
+
+    };
+
+    const closeModal = () => {
+        setIsModalOpen(false);
+    };
+
+    const handlSignOut = async () => {
+        try {
+            await logout()
+            router.push('/')
+            console.log('logged out');
+
+        } catch (error) {
+            console.log(error)
+
+        }
+    }
+
     return (
         <div className="max-w-3xl mx-auto py-20">
             <section>
@@ -26,8 +64,13 @@ const page = (props: Props) => {
                 </div>
 
                 <div>
-                    <Link className="text-orange-500 hover:text-black hover:underline text-sm font-headers" href={'/account/edit'}>Edit Profile</Link>
-                    <Link className="ml-5 text-orange-500 hover:text-black hover:underline text-sm font-headers" href={'/account/edit'}>Log out</Link>
+                    <button
+                        onClick={openModal}
+                        className="text-orange-500 hover:text-black hover:underline text-sm font-headers"
+                    >
+                        Edit Profile
+                    </button>
+                    <button onClick={handlSignOut} className="ml-5 text-orange-500 hover:text-black hover:underline text-sm font-headers">Log out</button>
 
                 </div>
 
@@ -100,6 +143,20 @@ const page = (props: Props) => {
                 </div>
 
             </section>
+
+            {/* Modal for Edit Profile */}
+            <Modal
+                isOpen={isModalOpen}
+                onRequestClose={closeModal}
+                contentLabel="Edit Profile Modal"
+                className="modal-content"
+                overlayClassName="modal-overlay"
+                ariaHideApp={false}
+            >
+                <h2>Edit Profile</h2>
+                {/* Use the new EditProfileForm component */}
+                <EditProfileForm closeModal={closeModal} />
+            </Modal>
         </div>
     )
 }

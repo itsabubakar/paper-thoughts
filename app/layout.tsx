@@ -6,6 +6,8 @@ import Context from './Context';
 import Footer from './_components/Footer/Footer';
 
 
+
+
 const syne = Syne({
   subsets: ['latin'],
   variable: '--font-syne',

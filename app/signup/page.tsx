@@ -1,27 +1,58 @@
+"use client"
 import Link from "next/link"
+import { useContext, useEffect } from "react"
 import { AiFillApple } from "react-icons/ai"
 import { FcGoogle } from 'react-icons/fc'
+import { AppContext } from "../Context"
+import { useRouter } from 'next/navigation'
+
+import { onAuthStateChanged } from "firebase/auth"
+import { auth } from "@/firebase"
 
 type Props = {}
 const page = (props: Props) => {
+    const router = useRouter();
+    const { googleSignIn, user } = useContext(AppContext)
+
+
+    useEffect(() => {
+        const unsubscribe = onAuthStateChanged(auth, (currentUser: any) => {
+            if (currentUser) {
+                router.push('/')
+            }
+
+        })
+        return () => unsubscribe()
+    }, [user])
+    const handleSignIn = async () => {
+        try {
+            await googleSignIn()
+
+            console.log('ran');
+
+        } catch (error) {
+            console.log(error);
+
+        }
+    }
     return <div className="flex min-h-screen bg-white">
 
         <div className="md:w-1/2 max-w-lg mx-auto shadow-none py-10 ">
 
 
-            <h1 className=" text-gray-700 text-3xl text-center font-medium font-headers">Create an account to start writing</h1>
-            <form action="#" className="font-body pt-5 ">
-                <div className="">
-                    <a href="#" className="transition duration-200 hover:text-black flex font-body items-center justify-center space-x-2 text-white my-2 py-2 bg-black hover:bg-gray-200 rounded">
-                        <FcGoogle size={23} />
-                        <span>Sign up with Google</span>
-                    </a>
-                    <a href="#" className="transition duration-200 hover:text-black flex font-body items-center justify-center space-x-2  my-2 py-2 bg-black text-white hover:bg-gray-200 rounded">
-                        <AiFillApple size={23} />
-                        <span>Sign up with Apple</span>
-                    </a>
+            <h1 className=" text-gray-700 text-3xl text-center font-medium font-headers pb-4">Create an account to start writing</h1>
+            <div className="">
+                <button onClick={handleSignIn} className="transition duration-200 hover:text-black flex font-body items-center justify-center space-x-2 text-white my-2 py-2 bg-black hover:bg-gray-200 rounded w-full">
+                    <FcGoogle size={23} />
+                    <span>Sign up with Google</span>
+                </button>
+                {/* <button className="transition duration-200 hover:text-black flex font-body items-center justify-center space-x-2  my-2 py-2 bg-black text-white hover:bg-gray-200 rounded">
+                    <AiFillApple size={23} />
+                    <span>Sign up with Apple</span>
+                </button> */}
 
-                </div>
+            </div>
+            {/* <form className="font-body pt-5 ">
 
 
                 <div
@@ -61,7 +92,7 @@ const page = (props: Props) => {
                 <div className="mt-5">
                     <input type="submit" value="Sign up" className="py-3 bg-orange-500 text-white w-full rounded hover:bg-black transition duration-200" />
                 </div>
-            </form>
+            </form> */}
             <Link className="" href="login" data-test="Link"><span className="block  p-5 text-center text-gray-700   ">Already have an account?</span></Link>
         </div>
 
