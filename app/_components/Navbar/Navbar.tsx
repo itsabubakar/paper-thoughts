@@ -28,7 +28,7 @@ const Navbar = (props: Props) => {
             <div className="max-w-7xl mx-auto flex  px-5 min-h-[72px] items-center bg-white border-b border-b-gray-100 font-medium ">
                 <div className=" ">
                     <div><Link className=" link font-semibold lg:font-medium !hidden md:!block" href={user ? '/write' : '/login'}>Write</Link></div>
-                    <div><Link className="md:hidden link font-semibold lg:font-medium" href={user ? '/write' : '/signin'}>{user ? 'Write' : 'Get Started'}</Link></div>
+                    <div><Link className="md:hidden link font-semibold lg:font-medium" href={user ? '/write' : '/signup'}>{user ? 'Write' : 'Get Started'}</Link></div>
                 </div>
 
                 <Link href={'/'} className="mx-auto">
