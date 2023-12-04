@@ -27,10 +27,11 @@
 - [x] add login and sign up to navbar
 - [x] build profile page with user details - short stories, poems, articles, bookmarks
 - [x] build profile component for navbar
-- [] clean up mobile navbar
+- [x] clean up mobile navbar
 - [] add the details to inner nav
-- [] start connecting stuffs to firebase
-- [] build write article page
+- [] publish an article to firebase
+- [] render published article from firebase
+- [x] build write article page
 - [] add sharing functionalities
 - [x] remove semi colon in navbar mobile
 - [] Add analytics

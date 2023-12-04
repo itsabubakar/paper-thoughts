@@ -15,9 +15,11 @@ const Navbar = (props: Props) => {
     const { menu, setMenu, user } = useContext(AppContext)
     const [loading, setLoading] = useState(true)
 
+
+
     useEffect(() => {
         const checkAuthentication = async () => {
-            await new Promise((resolve) => setTimeout(resolve, 50))
+            await new Promise((resolve) => setTimeout(resolve, 300))
             setLoading(false)
         }
         checkAuthentication()
@@ -54,7 +56,7 @@ const Navbar = (props: Props) => {
                     ) : (
                         <div>
                             <Link href={'/account'} className="text-white py-1 px-2 bg-black rounded-full block capitalize">
-                                {user.email}
+                                {user?.displayName.split(' ')[0]}
                             </Link>
 
                         </div>

@@ -58,4 +58,10 @@ body ::selection {
     justify-content: center;
     align-items: center;
   }
+
+.my-quill-container .ql-editor {
+    @apply font-body;
+    min-height: 360px; /* Set your desired minimum height */
+    font-size: 16px;
+  }
   
