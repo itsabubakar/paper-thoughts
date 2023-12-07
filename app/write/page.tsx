@@ -1,11 +1,13 @@
 "use client"
 import { useContext, useEffect, useState } from 'react'
-import ReactQuill from 'react-quill';
 import 'react-quill/dist/quill.snow.css';
 import { AppContext } from "../Context"
 import { useRouter } from 'next/navigation'
 import { onAuthStateChanged } from "firebase/auth"
 import { auth } from "@/firebase"
+import dynamic from "next/dynamic"
+
+const ReactQuill = dynamic(() => import('react-quill'), { ssr: false })
 const modules = {
     toolbar: [
         [{ header: [1, 2, 3, 4, 5, 6, false] }],
