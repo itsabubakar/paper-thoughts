@@ -6,6 +6,10 @@ import { useRouter } from 'next/navigation'
 import { onAuthStateChanged } from "firebase/auth"
 import { auth } from "@/firebase"
 import dynamic from "next/dynamic"
+import { db } from '@/firebase';
+import { addDoc, collection, serverTimestamp } from 'firebase/firestore';
+import Loading from '../_components/utils/Loading';
+
 
 const ReactQuill = dynamic(() => import('react-quill'), { ssr: false })
 const modules = {
@@ -22,11 +26,14 @@ const modules = {
 }
 
 const Page = () => {
-    const [value, setValue] = useState("");
+    const [value, setValue] = useState('');
     const [title, setTitle] = useState('');
+    const [tag, setTag] = useState('');
 
-    const { user } = useContext(AppContext)
+    const { user, loading, setLoading } = useContext(AppContext)
     const router = useRouter();
+
+    // console.log(user);
 
     useEffect(() => {
         const unsubscribe = onAuthStateChanged(auth, (currentUser: any) => {
@@ -39,27 +46,34 @@ const Page = () => {
     }, [user])
 
     const handleSubmit = async (e: any) => {
+        setLoading(true)
         e.preventDefault();
-        const doc = {
+        const postRef = collection(db, 'posts'); // 'posts' is the name of the collection
+        const newDoc = {
             title,
-            content: value
-        }
-        console.log(doc);
+            tag,
+            content: value,
+            uid: user?.uid,
+            authorName: user?.displayName,
+            createdAt: serverTimestamp(),
+        };
 
-        // await fetch('/api/post', {
-        //     method: 'POST',
-        //     body: JSON.stringify(doc),
-        //     headers: {
-        //         'Content-Type': 'application/json'
-        //     }
-        // })
-        // router.push('/')
-    }
+        const docRef = await addDoc(postRef, newDoc);
+
+        // Get the ID of the newly created document
+        const postId = docRef.id;
+
+        // Redirect to the dynamic post page using the postId
+        router.push(`/articles/${postId}`);
+        setLoading(false)
+    };
 
 
 
     return (
-        <div className='py-6'>
+        loading ? (
+            <Loading />
+        ) : <div className='py-6'>
             <form onSubmit={handleSubmit}>
                 <div className="-4">
 
@@ -69,7 +83,18 @@ const Page = () => {
                         value={title}
                         onChange={(e) => setTitle(e.target.value)}
                         placeholder="Title"
-                        className="text-xl border-x border-t border-gray-300 font-headers py-2 px-4 w-full placeholder:text-xl outline-0"
+                        className="capitalize text-xl border-x border-t border-gray-300 font-headers py-2 px-4 w-full placeholder:text-xl outline-0"
+                    />
+                </div>
+                <div className="-4">
+
+                    <input
+                        type="text"
+                        id="tag"
+                        value={tag}
+                        onChange={(e) => setTag(e.target.value)}
+                        placeholder="Tag"
+                        className="capitalize text-xl border-x border-t border-gray-300 font-headers py-2 px-4 w-full placeholder:text-lg outline-0"
                     />
                 </div>
                 <ReactQuill className='my-quill-container ' onChange={setValue} modules={modules} theme="snow" placeholder="Content goes here..." />

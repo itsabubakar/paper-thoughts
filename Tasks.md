@@ -28,13 +28,26 @@
 - [x] build profile page with user details - short stories, poems, articles, bookmarks
 - [x] build profile component for navbar
 - [x] clean up mobile navbar
-- [] add the details to inner nav
-- [] publish an article to firebase
-- [] render published article from firebase
+- [x] add the details to inner nav
+- [x] publish an article to firebase
+- [x] render published article from firebase
 - [x] build write article page
-- [] add sharing functionalities
 - [x] remove semi colon in navbar mobile
+- [x] Style dynamic content
 - [] Add analytics
 - [] Add terms of use page
+- [] add sharing functionalities
 - [] Add privacy policy
 - [] Add sitemaps
+- [] prettify link
+- [] add search
+- [] add content to firebase
+- [] add content to home page
+- [] Everytime a user creates a post, his user id and user name will be added to the post
+- [x] add loading states
+- [] add a states counter for posts
+- [] set up structure for all types of post to be published, so for book review add a part for img link
+- [] remove function that check if user is in collection from context, add it to sign up and login
+- [] create a collection for featured articles and figure out a way to do it
+- [] test out your app
+- [] 
