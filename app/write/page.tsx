@@ -76,26 +76,28 @@ const Page = () => {
         ) : <div className='py-6'>
             <form onSubmit={handleSubmit}>
                 <div className="-4">
-
+                    <label htmlFor="title" className="block  text-sm font-medium text-gray-900 py-3 font-headers">Title</label>
                     <input
                         type="text"
                         id="title"
                         value={title}
                         onChange={(e) => setTitle(e.target.value)}
                         placeholder="Title"
-                        className="capitalize text-xl border-x border-t border-gray-300 font-headers py-2 px-4 w-full placeholder:text-xl outline-0"
+                        className="capitalize text-xl border-b border-gray-300 font-headers py-2 px-2 w-full placeholder:text-lg border"
                     />
                 </div>
-                <div className="-4">
+                <div className="mb-4">
 
-                    <input
-                        type="text"
-                        id="tag"
-                        value={tag}
-                        onChange={(e) => setTag(e.target.value)}
-                        placeholder="Tag"
-                        className="capitalize text-xl border-x border-t border-gray-300 font-headers py-2 px-4 w-full placeholder:text-lg outline-0"
-                    />
+                    <label htmlFor="countries" className="block  text-sm font-medium text-gray-900 py-3 font-headers">Choose a tag</label>
+                    <select onChange={(e) => setTag(e.target.value)} id="tags" className="border bg-gray-50  text-gray-900 text-sm focus:ring-orange-500 focus:border-orange-500 block w-full py-2 font-headers px-2">
+
+                        <option selected value="article">Article</option>
+                        <option value="short-story">short story</option>
+                        <option value="poem">poem</option>
+                        <option value="essay">essay</option>
+                        <option value="book-review">book review</option>
+                    </select>
+
                 </div>
                 <ReactQuill className='my-quill-container ' onChange={setValue} modules={modules} theme="snow" placeholder="Content goes here..." />
                 <button className='hover:bg-white hover:text-black border-black border transition duration-200  mt-2 bg-black text-white py-2 px-4 flex'>Publish</button>
