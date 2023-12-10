@@ -9,7 +9,7 @@ import RelatedArticle from "@/app/_components/Articles/RelatedArticle";
 import Link from "next/link";
 import { MdOutlineArrowBackIosNew } from 'react-icons/md'
 import Share from "@/app/_components/utils/Share";
-import ReactHtmlParser from 'react-html-parser';
+import parse from "html-react-parser";
 import Loading from '@/app/_components/utils/Loading';
 
 interface Post {
@@ -97,7 +97,7 @@ const Page = () => {
                 {/* content */}
 
                 <section className="font-body pt-8 pb-4 text-xl text-gray-800 border-b border-border-color prose prose-p:pb-4 mb-10">
-                    {ReactHtmlParser(post.content)}
+                    {parse(post.content)}
                 </section>
 
 
