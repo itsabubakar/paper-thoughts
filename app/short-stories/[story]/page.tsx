@@ -4,14 +4,61 @@ import RelatedArticle from "@/app/_components/Articles/RelatedArticle";
 import Link from "next/link";
 import { MdOutlineArrowBackIosNew } from 'react-icons/md'
 import Share from "@/app/_components/utils/Share";
+import { useParams } from "next/navigation";
+import { useEffect, useState } from "react";
+import { doc, getDoc, DocumentSnapshot } from 'firebase/firestore';
+import { db } from '@/firebase';
+import Loading from "@/app/_components/utils/Loading";
+import parse from "html-react-parser";
 
-const Page = ({
-    params,
-}: {
-    params: { article: string };
-}) => {
-    const logger = () => {
-        console.log(params)
+
+type Story = {
+    title: string;
+    tag: string;
+    content: string;
+    uid: string;
+    authorName: string;
+}
+
+const Page = () => {
+    const params = useParams()
+
+    const storyId = params.story
+    const [story, setPoem] = useState<Story | null>(null);
+    const [notFound, setNotFound] = useState(false);
+
+    useEffect(() => {
+        const fetchContent = async () => {
+            if (storyId) {
+                try {
+                    const storyDoc = await getDoc(doc(db, 'short-stories', storyId as string));
+                    if (storyDoc.exists()) {
+                        setPoem(storyDoc.data() as Story);
+                    } else {
+                        // Handle case where the story doesn't exist
+                        setNotFound(true)
+                        console.error('Story not found');
+                    }
+                } catch (error) {
+                    setNotFound(true)
+                    console.error('Error fetching poem:', error);
+                }
+            }
+        };
+
+        fetchContent();
+    }, [storyId]);
+
+    if (!story) {
+        if (notFound) {
+            return (
+                <div className='h-[80vh] flex justify-center items-center'>
+                    <h1 className='text-xl text-gray-800 capitalize'>Story not found</h1>
+                </div>
+            )
+        }
+        // You might want to render a loading state or handle other scenarios
+        return <Loading />;
     }
 
     return (
@@ -26,11 +73,11 @@ const Page = ({
                 <h2 className="text-orange-500 font-semibold tracking-widest capitalize font-headers text-xl">Romance</h2>
 
                 {/* header */}
-                <h1 className="text-4xl font-bold pb-2 font-headers">Flow</h1>
+                <h1 className="text-4xl font-bold pb-2 font-headers">{story.title}</h1>
 
                 <div className="flex flex-col sm:flex-row justify-between items-center">
                     {/* author */}
-                    <p className="uppercase font-body tracking-wider">By <Link className="underline transition-all duration-200 hover:text-orange-500 hover:no-underline" href={'/'}>Sadiq Bilyamin</Link></p>
+                    <p className="uppercase font-body tracking-wider">By <Link className="underline transition-all duration-200 hover:text-orange-500 hover:no-underline" href={`/account/${story.uid}`}>{story.authorName}</Link></p>
                     {/* share */}
                     <div className=" pt-3 sm:pt-0">
                         <Share />
@@ -41,20 +88,10 @@ const Page = ({
             </section>
 
             {/* content */}
-            <section className="font-body pt-8 pb-4 text-xl text-gray-800 border-b border-border-color">
-                <h2 className="font-headers text-3xl capitalize font-semibold py-5">chapter one</h2>
-                <p className="pb-6">Lorem ipsum dolor sit amet consectetur adipisicing elit. Pariatur quibusdam ipsam hic fuga aspernatur illum mollitia in? Possimus veniam accusantium cum similique et. Tempore eos pariatur, quam dolor ut nesciunt!</p>
-                <p className="pb-6">Lorem ipsum dolor sit amet consectetur adipisicing elit. Pariatur quibusdam ipsam hic fuga aspernatur illum mollitia in? Possimus veniam accusantium cum similique et. Tempore eos pariatur, quam dolor ut nesciunt!</p>
-                <p className="pb-4">Lorem ipsum dolor sit amet consectetur adipisicing elit. Pariatur quibusdam ipsam hic fuga aspernatur illum mollitia in? Possimus veniam accusantium cum similique et. Tempore eos pariatur, quam dolor ut nesciunt! Lorem, ipsum dolor sit amet consectetur adipisicing elit. Aliquid deleniti, error dicta pariatur non doloribus ducimus dolore consectetur a voluptates commodi minima! Tenetur non cumque modi officiis omnis nobis culpa. Lorem ipsum dolor sit amet consectetur adipisicing elit. Vel corporis quibusdam incidunt reiciendis nulla, consequatur pariatur in repellendus aspernatur quod cupiditate molestias velit aut eos ab tempora numquam explicabo praesentium.</p>
-                <p className="pb-4">Lorem ipsum dolor sit amet consectetur adipisicing elit. Pariatur quibusdam ipsam hic fuga aspernatur illum mollitia in? Possimus veniam accusantium cum similique et. Tempore eos pariatur, quam dolor ut nesciunt! Lorem, ipsum dolor sit amet consectetur adipisicing elit. Aliquid deleniti, error dicta pariatur non doloribus ducimus dolore consectetur a voluptates commodi minima! Tenetur non cumque modi officiis omnis nobis culpa. Lorem ipsum dolor sit amet consectetur adipisicing elit. Vel corporis quibusdam incidunt reiciendis nulla, consequatur pariatur in repellendus aspernatur quod cupiditate molestias velit aut eos ab tempora numquam explicabo praesentium.</p>
-                <p className="pb-6">Lorem ipsum dolor sit amet consectetur adipisicing elit. Pariatur quibusdam ipsam hic fuga aspernatur illum mollitia in? Possimus veniam accusantium cum similique et. Tempore eos pariatur, quam dolor ut nesciunt!</p>
-                <h2 className="font-headers text-3xl capitalize font-semibold py-5">chapter two</h2>
-                <p className="pb-6">Lorem ipsum dolor sit amet consectetur adipisicing elit. Pariatur quibusdam ipsam hic fuga aspernatur illum mollitia in? Possimus veniam accusantium cum similique et. Tempore eos pariatur, quam dolor ut nesciunt!</p>
-                <p className="pb-6">Lorem ipsum dolor sit amet consectetur adipisicing elit. Pariatur quibusdam ipsam hic fuga aspernatur illum mollitia in? Possimus veniam accusantium cum similique et. Tempore eos pariatur, quam dolor ut nesciunt!</p>
-                <p className="pb-4">Lorem ipsum dolor sit amet consectetur adipisicing elit. Pariatur quibusdam ipsam hic fuga aspernatur illum mollitia in? Possimus veniam accusantium cum similique et. Tempore eos pariatur, quam dolor ut nesciunt! Lorem, ipsum dolor sit amet consectetur adipisicing elit. Aliquid deleniti, error dicta pariatur non doloribus ducimus dolore consectetur a voluptates commodi minima! Tenetur non cumque modi officiis omnis nobis culpa. Lorem ipsum dolor sit amet consectetur adipisicing elit. Vel corporis quibusdam incidunt reiciendis nulla, consequatur pariatur in repellendus aspernatur quod cupiditate molestias velit aut eos ab tempora numquam explicabo praesentium.</p>
-                <p className="pb-4">Lorem ipsum dolor sit amet consectetur adipisicing elit. Pariatur quibusdam ipsam hic fuga aspernatur illum mollitia in? Possimus veniam accusantium cum similique et. Tempore eos pariatur, quam dolor ut nesciunt! Lorem, ipsum dolor sit amet consectetur adipisicing elit. Aliquid deleniti, error dicta pariatur non doloribus ducimus dolore consectetur a voluptates commodi minima! Tenetur non cumque modi officiis omnis nobis culpa. Lorem ipsum dolor sit amet consectetur adipisicing elit. Vel corporis quibusdam incidunt reiciendis nulla, consequatur pariatur in repellendus aspernatur quod cupiditate molestias velit aut eos ab tempora numquam explicabo praesentium.</p>
-                <p className="pb-6">Lorem ipsum dolor sit amet consectetur adipisicing elit. Pariatur quibusdam ipsam hic fuga aspernatur illum mollitia in? Possimus veniam accusantium cum similique et. Tempore eos pariatur, quam dolor ut nesciunt!</p>
 
+
+            <section className="border-b border-border-color font-body pt-8 pb-4 text-xl text-gray-800  prose prose-h1:font-headers prose-h2:text-3xl prose-h3:text-2xl prose-h4:text-xl prose-h5:text-lg prose-h6:text-base  prose-headings:font-headers prose-headings:text-xl prose-headings:capitalize prose-headings:font-semibold prose-headings:py-5 prose-strong:font-semibold">
+                {parse(story.content)}
             </section>
 
             {/* related articles */}

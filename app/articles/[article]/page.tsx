@@ -12,7 +12,7 @@ import Share from "@/app/_components/utils/Share";
 import parse from "html-react-parser";
 import Loading from '@/app/_components/utils/Loading';
 
-interface Post {
+interface Article {
     title: string;
     tag: string;
     content: string;
@@ -25,31 +25,31 @@ const Page = () => {
     const params = useParams()
     console.log(params.article);
 
-    const postId = params.article
-    const [post, setPost] = useState<Post | null>(null);
+    const articleId = params.article
+    const [post, setPost] = useState<Article | null>(null);
     const [notFound, setNotFound] = useState(false);
 
     useEffect(() => {
-        const fetchPost = async () => {
-            if (postId) {
+        const fetchArticle = async () => {
+            if (articleId) {
                 try {
-                    const postDoc = await getDoc(doc(db, 'posts', postId as string));
-                    if (postDoc.exists()) {
-                        setPost(postDoc.data() as Post);
+                    const articleDoc = await getDoc(doc(db, 'articles', articleId as string));
+                    if (articleDoc.exists()) {
+                        setPost(articleDoc.data() as Article);
                     } else {
                         // Handle case where the post doesn't exist
                         setNotFound(true)
-                        console.error('Post not found');
+                        console.error('Article not found');
                     }
                 } catch (error) {
                     setNotFound(true)
-                    console.error('Error fetching post:', error);
+                    console.error('Error fetching article:', error);
                 }
             }
         };
 
-        fetchPost();
-    }, [postId]);
+        fetchArticle();
+    }, [articleId]);
 
     if (!post) {
         if (notFound) {

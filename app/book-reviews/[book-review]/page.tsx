@@ -46,6 +46,7 @@ const Page = ({
                         width={200}
                         height={400}
                         className="w-full"
+                        unoptimized
                     />
                 </div>
                 <div className="w-2/3">
