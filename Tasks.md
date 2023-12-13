@@ -39,13 +39,20 @@
 - []
 
 ## Core functionality
-- [] set up structure for all types of post to be published, so for book review add a part for img link
+- [x] set up structure for all types of post to be published, so for book review add a part for img link
 - [] create a collection for featured articles and figure out a way to do it
 - [] add a states counter for posts views
 - [] add sharing functionalities
 - [] add content to firebase
 - [] add content to home page
 - [] add search
+- [] clicking on author name should take you to an about page with all their info
+- [] clicking on your name should take you to your profile with all your info
+- [] be able to edit your profile
+- [] home page should pull content from firebase
+- [] authors should pull users with short stories 
+- [] poets should pull users with poems
+
 
 ## Nice to have
 - [] prettify link

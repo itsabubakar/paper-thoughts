@@ -1,17 +1,87 @@
 'use client'
+import parse from "html-react-parser";
 
 import RelatedArticle from "@/app/_components/Articles/RelatedArticle";
 import Link from "next/link";
 import { MdOutlineArrowBackIosNew } from 'react-icons/md'
 import Share from "@/app/_components/utils/Share";
 import Image from "next/image";
+import { useEffect, useState } from "react";
+import { useParams } from "next/navigation";
+import { doc, getDoc } from "firebase/firestore";
+import { db } from "@/firebase";
+import Loading from "@/app/_components/utils/Loading";
 
-const Page = ({
-    params,
-}: {
-    params: { book: string };
-}) => {
+type BookReview = {
+    title: string;
+    tag: string;
+    imgUrl: string;
+    content: string;
+    uid: string;
+    authorName: string;
+    createdAt: {
+        seconds: number;
+        nanoseconds: number;
+    };
+};
+const Page = () => {
+    const params = useParams()
 
+    const articleId = params['book-review']
+    console.log(articleId)
+    const [bookReview, setBookReview] = useState<BookReview | null>(null);
+    const [notFound, setNotFound] = useState(false);
+
+    useEffect(() => {
+        const fetchArticle = async () => {
+            if (articleId) {
+                try {
+                    const bookReview = await getDoc(doc(db, 'book-reviews', articleId as string));
+                    if (bookReview.exists()) {
+                        setBookReview(bookReview.data() as BookReview);
+                    } else {
+                        // Handle case where the book review doesn't exist
+                        setNotFound(true)
+                        console.error('Book review not found');
+                    }
+                } catch (error) {
+                    setNotFound(true)
+                    console.error('Error fetching book review:', error);
+                }
+            }
+        };
+
+        fetchArticle();
+    }, [articleId]);
+
+    if (!bookReview) {
+        if (notFound) {
+            return (
+                <div className='h-[80vh] flex justify-center items-center'>
+                    <h1 className='text-xl text-gray-800 capitalize'>Book review not found</h1>
+                </div>
+            )
+        }
+        // You might want to render a loading state or handle other scenarios
+        return <Loading />;
+    }
+
+    const createdAtTimestamp = bookReview.createdAt.seconds;
+    const monthNames = [
+        'January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'
+    ];
+
+    // Convert timestamp to Date object
+    const createdAtDate = new Date(createdAtTimestamp * 1000); // Multiply by 1000 to convert seconds to milliseconds
+
+    // Get numerical components
+    const year = createdAtDate.getFullYear();
+    const monthIndex = createdAtDate.getMonth();
+    const month = monthNames[monthIndex];
+    const day = createdAtDate.getDate();
+
+
+    // Display the numerical components
 
     return (
         <div className="max-w-5xl mx-auto">
@@ -23,11 +93,13 @@ const Page = ({
 
 
                 {/* header */}
-                <h1 className="text-4xl font-bold pb-2 font-headers capitalize">Seasons of crimson blossom</h1>
+                <h1 className="text-4xl font-bold pb-2 font-headers capitalize">{bookReview.title}</h1>
+                <p>{month} {day}, {year}</p>
 
                 <div className="flex flex-col sm:flex-row justify-between items-center">
                     {/* author */}
-                    <p className="uppercase font-body tracking-wider">reviewd By <Link className="underline transition-all duration-200 hover:text-orange-500 hover:no-underline" href={'/'}>Sadiq Bilyamin</Link></p>
+                    <p className="uppercase font-body tracking-wider">By <Link className="underline transition-all duration-200 hover:text-orange-500 hover:no-underline" href={`/account/${bookReview.uid}`}>{bookReview.authorName}</Link></p>
+
                     {/* share */}
                     <div className=" pt-3 sm:pt-0">
                         <Share />
@@ -41,7 +113,7 @@ const Page = ({
             <section className="flex flex-row-reverse font-body pt-8 pb-4 text-xl text-gray-800 border-b border-border-color gap-x-16">
                 <div className="w-1/4 items-end ">
                     <Image
-                        src="/images/cover-img.jpg"
+                        src={bookReview.imgUrl}
                         alt="Season of Crimson Blossoms Cover"
                         width={200}
                         height={400}
@@ -49,16 +121,15 @@ const Page = ({
                         unoptimized
                     />
                 </div>
-                <div className="w-2/3">
+                <div className="w-2/3 font-body pt-8 pb-4 text-xl text-gray-800  prose  mb-10">
 
-                    <p className="pb-6">Lorem ipsum dolor sit amet consectetur adipisicing elit. Pariatur quibusdam ipsam hic fuga aspernatur illum mollitia in? Possimus veniam accusantium cum similique et. Tempore eos pariatur, quam dolor ut nesciunt!</p>
-                    <p className="pb-4">Lorem ipsum dolor sit amet consectetur adipisicing elit. Pariatur quibusdam ipsam hic fuga aspernatur illum mollitia in? Possimus veniam accusantium cum similique et. Tempore eos pariatur, quam dolor ut nesciunt! Lorem, ipsum dolor sit amet consectetur adipisicing elit. Aliquid deleniti, error dicta pariatur non doloribus ducimus dolore consectetur a voluptates commodi minima! Tenetur non cumque modi officiis omnis nobis culpa. Lorem ipsum dolor sit amet consectetur adipisicing elit. Vel corporis quibusdam incidunt reiciendis nulla, consequatur pariatur in repellendus aspernatur quod cupiditate molestias velit aut eos ab tempora numquam explicabo praesentium.</p>
-                    <p className="pb-4">Lorem ipsum dolor sit amet consectetur adipisicing elit. Pariatur quibusdam ipsam hic fuga aspernatur illum mollitia in? Possimus veniam accusantium cum similique et. Tempore eos pariatur, quam dolor ut nesciunt! Lorem, ipsum dolor sit amet consectetur adipisicing elit. Aliquid deleniti, error dicta pariatur non doloribus ducimus dolore consectetur a voluptates commodi minima! Tenetur non cumque modi officiis omnis nobis culpa. Lorem ipsum dolor sit amet consectetur adipisicing elit. Vel corporis quibusdam incidunt reiciendis nulla, consequatur pariatur in repellendus aspernatur quod cupiditate molestias velit aut eos ab tempora numquam explicabo praesentium.</p>
+                    {parse(bookReview.content)}
 
                 </div>
 
 
             </section>
+
 
             {/* related articles */}
 

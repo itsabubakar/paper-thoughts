@@ -53,10 +53,12 @@ const Page = () => {
         console.log(tag);
 
         const postRef = collection(db, tag); // 'posts' is the name of the collection
+        const newTag = tag.slice(0, -1); // removing the last s in the tag names
+
         if (tag === "book-reviews") {
             const newDoc = {
                 title,
-                tag,
+                tag: newTag,
                 imgUrl,
                 content: value,
                 uid: user?.uid,
@@ -74,7 +76,7 @@ const Page = () => {
             {
                 const newDoc = {
                     title,
-                    tag,
+                    tag: newTag,
                     genre,
                     content: value,
                     uid: user?.uid,
@@ -93,7 +95,7 @@ const Page = () => {
             {
                 const newDoc = {
                     title,
-                    tag,
+                    tag: newTag,
                     content: value,
                     uid: user?.uid,
                     authorName: user?.displayName,
@@ -104,7 +106,7 @@ const Page = () => {
                 const postId = docRef.id;
 
                 // Redirect to the dynamic post page using the postId
-                router.push(`/${tag}/${postId}`);
+                // router.push(`/${tag}/${postId}`);
 
             }
         }
