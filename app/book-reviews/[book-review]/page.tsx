@@ -11,6 +11,7 @@ import { useParams } from "next/navigation";
 import { doc, getDoc } from "firebase/firestore";
 import { db } from "@/firebase";
 import Loading from "@/app/_components/utils/Loading";
+import DateFormat from "@/app/_components/utils/DateFormat";
 
 type BookReview = {
     title: string;
@@ -66,22 +67,6 @@ const Page = () => {
         return <Loading />;
     }
 
-    const createdAtTimestamp = bookReview.createdAt.seconds;
-    const monthNames = [
-        'January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'
-    ];
-
-    // Convert timestamp to Date object
-    const createdAtDate = new Date(createdAtTimestamp * 1000); // Multiply by 1000 to convert seconds to milliseconds
-
-    // Get numerical components
-    const year = createdAtDate.getFullYear();
-    const monthIndex = createdAtDate.getMonth();
-    const month = monthNames[monthIndex];
-    const day = createdAtDate.getDate();
-
-
-    // Display the numerical components
 
     return (
         <div className="max-w-5xl mx-auto">
@@ -94,7 +79,7 @@ const Page = () => {
 
                 {/* header */}
                 <h1 className="text-4xl font-bold pb-2 font-headers capitalize">{bookReview.title}</h1>
-                <p>{month} {day}, {year}</p>
+                <DateFormat timestamp={bookReview.createdAt.seconds} />
 
                 <div className="flex flex-col sm:flex-row justify-between items-center">
                     {/* author */}
@@ -110,8 +95,8 @@ const Page = () => {
             </section>
 
             {/* content */}
-            <section className="flex flex-row-reverse font-body pt-8 pb-4 text-xl text-gray-800 border-b border-border-color gap-x-16">
-                <div className="w-1/4 items-end ">
+            <section className="sm:flex flex-row-reverse font-body pt-8 pb-4 text-xl text-gray-800 border-b border-border-color gap-x-16">
+                <div className="sm:w-1/4 items-end ">
                     <Image
                         src={bookReview.imgUrl}
                         alt="Season of Crimson Blossoms Cover"
@@ -121,7 +106,7 @@ const Page = () => {
                         unoptimized
                     />
                 </div>
-                <div className="w-2/3 font-body pt-8 pb-4 text-xl text-gray-800  prose  mb-10">
+                <div className="sm:w-2/3 font-body pt-8 pb-4 text-xl text-gray-800  prose  mb-10">
 
                     {parse(bookReview.content)}
 

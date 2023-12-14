@@ -35,8 +35,6 @@ const Page = () => {
     const { user, loading, setLoading } = useContext(AppContext)
     const router = useRouter();
 
-    // console.log(user);
-
     useEffect(() => {
         const unsubscribe = onAuthStateChanged(auth, (currentUser: any) => {
             if (!currentUser) {
@@ -106,7 +104,7 @@ const Page = () => {
                 const postId = docRef.id;
 
                 // Redirect to the dynamic post page using the postId
-                // router.push(`/${tag}/${postId}`);
+                router.push(`/${tag}/${postId}`);
 
             }
         }

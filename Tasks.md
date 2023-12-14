@@ -40,25 +40,27 @@
 
 ## Core functionality
 - [x] set up structure for all types of post to be published, so for book review add a part for img link
-- [] create a collection for featured articles and figure out a way to do it
-- [] add a states counter for posts views
-- [] add sharing functionalities
-- [] add content to firebase
-- [] add content to home page
-- [] add search
-- [] clicking on author name should take you to an about page with all their info
-- [] clicking on your name should take you to your profile with all your info
+- [x] add content to firebase
+- [x] clicking on author name should take you to an about page with all their info
+- [x] add content to home page
+- [x] clicking on your name should take you to your profile with all your info
+- [x] home page should pull content from firebase
 - [] be able to edit your profile
-- [] home page should pull content from firebase
 - [] authors should pull users with short stories 
 - [] poets should pull users with poems
+- [] edit pages that don't need state to run on server
+- [] add search
+- [] add a states counter for posts views
+- [] add sharing functionalities
+- [] create a collection for featured articles and figure out a way to do it
 
 
 ## Nice to have
 - [] prettify link
+- [x] use static generation to render homepage content
 
 ## Optimization
-- [] remove function that check if user is in collection from context, add it to sign up and login
+- [] remove function that check if user is in collection from context, add it to sign up and login -- start with this
 
 ## Analytics
 - [] Add privacy policy

@@ -151,32 +151,20 @@ const Page = (props: Props) => {
                     {/* Render content based on activeTab */}
                     {activeTab === 'shortStories' &&
                         <div>
-                            <Article />
-                            <Article />
-                            <Article />
-                            <Article />
+                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quasi, optio eum deleniti laboriosam enim libero dolorum placeat ut possimus doloribus aut expedita quidem vero distinctio a nam suscipit natus cupiditate!</p>
                         </div>}
                     {activeTab === 'poems' &&
                         <div className="grid justify-center md:grid-cols-2 gap-5 md:gap-y-14 pt-5">
-                            <PoemLink />
-                            <PoemLink />
-                            <PoemLink />
-                            <PoemLink />
-                            <PoemLink />
-                            <PoemLink />
+                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quasi, optio eum deleniti laboriosam enim libero dolorum placeat ut possimus doloribus aut expedita quidem vero distinctio a nam suscipit natus cupiditate!</p>
 
                         </div>}
                     {activeTab === 'articles' &&
                         <div>
-                            <Article />
-                            <Article />
-                            <Article />
-                            <Article />
+                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quasi, optio eum deleniti laboriosam enim libero dolorum placeat ut possimus doloribus aut expedita quidem vero distinctio a nam suscipit natus cupiditate!</p>
                         </div>}
                     {activeTab === 'bookmarks' &&
                         <div>
-                            <Article />
-                            <Article />
+                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quasi, optio eum deleniti laboriosam enim libero dolorum placeat ut possimus doloribus aut expedita quidem vero distinctio a nam suscipit natus cupiditate!</p>
                         </div>}
                 </div>
 
