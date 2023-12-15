@@ -26,10 +26,6 @@ const fetchData: any = async (data: string) => {
     console.error('Error fetching data:', error);
   }
 
-
-
-
-  // Make sure to return the fetched data as prop
 }
 
 const articles = await fetchData('articles');

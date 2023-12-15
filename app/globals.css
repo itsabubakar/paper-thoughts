@@ -45,10 +45,13 @@ body ::selection {
     padding: 20px;
     outline: none;
     border-radius: 5px;
+    z-index: 99;
   }
   
   .modal-overlay {
     position: fixed;
+    z-index: 99;
+
     top: 0;
     left: 0;
     right: 0;

@@ -9,18 +9,55 @@ import Modal from "react-modal";
 import EditProfileForm from "../_components/Modal/EditProfileForm";
 import { AppContext } from "../Context";
 import { useRouter } from "next/navigation";
+import { doc, getDoc, DocumentData } from "firebase/firestore";
+import { db } from "@/firebase";
 
 type Props = {}
+type UserProfile = {
+    penName: string;
+    about: string;
+    instagram: string;
+    twitter: string;
+    email: string;
+};
+
 const Page = (props: Props) => {
     const [activeTab, setActiveTab] = useState('shortStories');
     const [isModalOpen, setIsModalOpen] = useState(false);
     const { logout } = useContext(AppContext)
-    const { user } = useContext(AppContext)
+    const { user, profile, setProfile } = useContext(AppContext)
     const router = useRouter();
 
+
+
+
     useEffect(() => {
-        if (!user)
-            router.push('/login')
+
+        const fetchProfile = async () => {
+            if (user) {
+                const profileRef = doc(db, 'users', user.uid);
+                try {
+                    const docSnap = await getDoc(profileRef);
+
+                    if (docSnap.exists()) {
+                        console.log("Profile data:", docSnap.data());
+                        setProfile(docSnap.data() as UserProfile);
+                    } else {
+                        console.log("No such profile!");
+                    }
+                } catch (error) {
+                    console.error("Error fetching profile: ", error);
+                }
+            } else {
+                console.log('No user is signed in.');
+                router.push('/')
+            }
+        };
+
+        fetchProfile();
+
+
+        console.log('user not logged in');
     }, [user])
 
 
@@ -54,7 +91,8 @@ const Page = (props: Props) => {
         <div className="max-w-3xl mx-auto py-20">
             <section>
                 <h2 className="text-4xl font-headers font-semibold">{user?.displayName}</h2>
-                <p className="font-body text lg py-2">Lorem ipsum dolor sit amet consectetur adipisicing elit. Nihil fuga enim neque ratione saepe commodi hic consectetur nostrum quis, culpa minus repellat incidunt doloremque architecto debitis voluptatum quia perferendis obcaecati?</p>
+                <h3 className="text-xl font-headers font-medium capitalize">{profile.penName && profile.penName}</h3>
+                <p className="font-body text lg py-2">{profile.about}</p>
                 <div className="flex py-3">
                     <Link className="border p-2 border-gray-200 hover:text-orange-500" href={'/'}><FaXTwitter className="" size={22} /></Link>
                     <Link className="border p-2 border-gray-200  hover:text-orange-500" href={'/'}><AiOutlineInstagram className="" size={22} /></Link>
@@ -136,13 +174,14 @@ const Page = (props: Props) => {
                 isOpen={isModalOpen}
                 onRequestClose={closeModal}
                 contentLabel="Edit Profile Modal"
-                className="modal-content"
+                className="modal-content "
                 overlayClassName="modal-overlay"
                 ariaHideApp={false}
             >
-                <h2>Edit Profile</h2>
+                <h2 className="font-headers  text-2xl font-semibold py-1">Edit Profile</h2>
                 {/* Use the new EditProfileForm component */}
-                <EditProfileForm closeModal={closeModal} />
+
+                <EditProfileForm profile={profile} closeModal={closeModal} />
             </Modal>
         </div>
     )

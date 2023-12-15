@@ -45,14 +45,15 @@
 - [x] add content to home page
 - [x] clicking on your name should take you to your profile with all your info
 - [x] home page should pull content from firebase
-- [] be able to edit your profile
-- [] authors should pull users with short stories 
-- [] poets should pull users with poems
-- [] edit pages that don't need state to run on server
-- [] add search
+- [] be able to edit your profile 2
+- [] authors should pull users with short stories 3
+- [] poets should pull users with poems 4
+- [] edit pages that don't need state to run on server 5
+- [] tweak explore page to work with pagination 6
+- [] add search 7
+- [] add sharing functionalities 8
+- [] create a collection for featured articles and figure out a way to do it 9
 - [] add a states counter for posts views
-- [] add sharing functionalities
-- [] create a collection for featured articles and figure out a way to do it
 
 
 ## Nice to have
@@ -60,7 +61,9 @@
 - [x] use static generation to render homepage content
 
 ## Optimization
-- [] remove function that check if user is in collection from context, add it to sign up and login -- start with this
+- [x] remove function that check if user is in collection from context, add it to sign up and login -- start with this 1
+- [] refactore the code, import the code that checks for users in the collection and work with it there
+
 
 ## Analytics
 - [] Add privacy policy

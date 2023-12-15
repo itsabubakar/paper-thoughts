@@ -7,7 +7,8 @@ import { AppContext } from "../Context"
 import { useRouter } from 'next/navigation'
 
 import { onAuthStateChanged } from "firebase/auth"
-import { auth } from "@/firebase"
+import { auth, db } from "@/firebase"
+import { collection, doc, getDocs, query, setDoc, where } from "firebase/firestore"
 
 
 
@@ -17,8 +18,40 @@ const Page = (props: Props) => {
     const { googleSignIn, user } = useContext(AppContext)
     const router = useRouter();
 
+
     useEffect(() => {
         const unsubscribe = onAuthStateChanged(auth, (currentUser: any) => {
+            const checkUsers = async () => {
+                // Check if the user is authenticated
+                if (currentUser) {
+                    const { uid, email, displayName } = currentUser;
+
+                    // Check if the user with the same email already exists in the 'users' collection
+                    const userQuery = query(collection(db, 'users'), where('email', '==', email));
+
+                    try {
+                        const userQuerySnapshot = await getDocs(userQuery);
+
+                        if (userQuerySnapshot.docs.length > 0) {
+                            // If the user already exists, log a message
+                            console.log('User already exists in the users collection');
+                        } else {
+                            // If the user doesn't exist, add them to the 'users' collection
+                            await setDoc(doc(db, 'users', uid), {
+                                uid,
+                                email,
+                                displayName,
+                                // Add other user details as needed
+                            });
+
+                            console.log('User added to users collection');
+                        }
+                    } catch (error) {
+                        console.error('Error querying users collection:', error);
+                    }
+                }
+            }
+            checkUsers()
             if (currentUser) {
                 router.push('/')
             }
@@ -31,7 +64,7 @@ const Page = (props: Props) => {
         try {
             await googleSignIn()
 
-            console.log('ran');
+
 
         } catch (error) {
             console.log(error);
