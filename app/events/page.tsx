@@ -23,7 +23,7 @@ const Page = (props: Props) => {
             </div>
 
 
-            <Pagination />
+            {/* <Pagination /> */}
         </SectionWrapper>
     )
 }

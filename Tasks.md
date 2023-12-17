@@ -45,15 +45,25 @@
 - [x] add content to home page
 - [x] clicking on your name should take you to your profile with all your info
 - [x] home page should pull content from firebase
-- [] be able to edit your profile 2
-- [] authors should pull users with short stories 3
-- [] poets should pull users with poems 4
-- [] edit pages that don't need state to run on server 5
-- [] tweak explore page to work with pagination 6
-- [] add search 7
-- [] add sharing functionalities 8
+- [x] be able to edit your profile 2
+- [x] tweak explore page to work with pagination 
+- [] account page should show all everything written by you 1
+- [] dynamic account page should work 2
+- [] complete who we are page 3
+- [] fix links on homepage 5
+- [] add search 5
+- [] edit pages that don't need state to run on server 
+- [] add sharing functionalities 
+- [] fix loading state on write and editlayout
 - [] create a collection for featured articles and figure out a way to do it 9
 - [] add a states counter for posts views
+- [] create a collection to store new authors and poets and show them on author and poet page
+- [] authors should pull users with short stories 3
+- [] poets should pull users with poems 4
+- [] 
+- [] 
+- [] 
+
 
 
 ## Nice to have

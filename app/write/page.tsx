@@ -86,7 +86,7 @@ const Page = () => {
                 const postId = docRef.id;
 
                 // Redirect to the dynamic post page using the postId
-                router.push(`/${tag}/${postId}`);
+                // router.push(`/${tag}/${postId}`);
 
             }
         } else {

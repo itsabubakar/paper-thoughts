@@ -1,15 +1,39 @@
-type Props = {}
-const Pagination = (props: Props) => {
-    return (
-        <div className="pt-5">
-            <ul className="flex  gap-1 w-fit">
-                <li className="border-2 border-[#c7c7c7] w-6 flex justify-center">1</li>
-                <li className="border-2 border-[#c7c7c7] w-6 flex justify-center">2</li>
-                <li className="border-2 border-[#c7c7c7] w-6 flex justify-center">3</li>
-                <li className="border-2 border-[#c7c7c7] w-6 flex justify-center">4</li>
-                <li className="border-2 border-[#c7c7c7] w-6 flex justify-center">6</li>
-            </ul>
-        </div>
-    )
+import { MdOutlineKeyboardArrowLeft, MdOutlineKeyboardArrowRight } from 'react-icons/md';
+
+interface PaginationProps {
+    currentPage: number;
+    totalPages: number;
+    onPageClick: (page: number) => void;
 }
-export default Pagination
+
+const Pagination: React.FC<PaginationProps> = ({ currentPage, totalPages, onPageClick }) => {
+    return (
+        <div className="flex flex-col items-center py-5 space-y-2">
+            <div className="flex items-center space-x-1">
+                <button
+                    className="disabled:opacity-50 disabled:cursor-not-allowed"
+                    onClick={() => onPageClick(currentPage - 1)}
+                    disabled={currentPage === 1}
+                >
+                    <MdOutlineKeyboardArrowLeft size={24} />
+                </button>
+
+                <span className="p-2 border rounded bg-orange-500 text-white">
+                    {currentPage}
+                </span>
+
+                <button
+                    className="disabled:opacity-50 disabled:cursor-not-allowed"
+                    onClick={() => onPageClick(currentPage + 1)}
+                    disabled={currentPage === totalPages}
+                >
+                    <MdOutlineKeyboardArrowRight size={24} />
+                </button>
+            </div>
+
+            <p className='font-headers text-gray-700 text-sm'>Showing page {currentPage} out of {totalPages}</p>
+        </div>
+    );
+};
+
+export default Pagination;

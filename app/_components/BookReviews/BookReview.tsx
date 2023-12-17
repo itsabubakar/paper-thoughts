@@ -26,7 +26,7 @@ const BookReview = ({ bookReview }: Props) => {
             <Link href={`/book-reviews/${bookReview.id}`} className="flex flex-col items-center">
                 <Image
                     src={bookReview.data?.imgUrl}
-                    alt="Season of Crimson Blossoms Cover"
+                    alt={bookReview.data?.title}
                     width={250}
                     height={400}
                     className=""

@@ -50,8 +50,8 @@ const Navbar = (props: Props) => {
 
                     {loading ? null : !user ? (
                         <div className="  px-2 hidden md:flex items-center">
-                            <Link onClick={() => setMenu(!menu)} href={'/signup'} className=" capitalize text-center py-1  px-5  rounded-2xl hover:border-border-color hover:text-gray-500 transition duration-200 underline hover:decoration-orange-500"> sign up</Link>
-                            <Link onClick={() => setMenu(!menu)} href={'/login'} className=" capitalize text-center py-1  px-5  rounded-2xl hover:border-border-color hover:text-gray-500 transition duration-200 underline hover:decoration-orange-500">login</Link>
+                            <Link href={'/signup'} className=" capitalize text-center py-1  px-5  rounded-2xl hover:border-border-color hover:text-gray-500 transition duration-200 underline hover:decoration-orange-500"> sign up</Link>
+                            <Link href={'/login'} className=" capitalize text-center py-1  px-5  rounded-2xl hover:border-border-color hover:text-gray-500 transition duration-200 underline hover:decoration-orange-500">login</Link>
                         </div>
                     ) : (
                         <div>
@@ -74,7 +74,7 @@ const Navbar = (props: Props) => {
                                 <div className="w-full md:flex justify-between hidden">
                                     <NavItem
                                         title={"Explore"}
-                                        links={[{ href: '/articles', label: 'Articles' }, { href: '/book-review', label: 'book reviews' }, { href: '/poems', label: 'Poems' }, { href: '/poets', label: 'Poets' }, { href: '/short-stories', label: 'Short Stories' }, { href: '/authors', label: 'Authors' }]}
+                                        links={[{ href: '/articles', label: 'Articles' }, { href: '/book-reviews', label: 'book reviews' }, { href: '/poems', label: 'Poems' }, { href: '/short-stories', label: 'Short Stories' }]}
                                     />
                                     <NavItem
                                         title={"About Us"}
@@ -86,7 +86,7 @@ const Navbar = (props: Props) => {
                                     />
                                     <NavItem
                                         title={"Support Us"}
-                                        links={[{ href: '/', label: 'submit piece' },
+                                        links={[{ href: '/write', label: 'submit piece' },
                                             //  { href: '/', label: 'donate' }
                                         ]}
                                     />
@@ -103,7 +103,7 @@ const Navbar = (props: Props) => {
                                     <div className="flex flex-col gap-y-8">
                                         <NavItem
                                             title={"Explore"}
-                                            links={[{ href: '/articles', label: 'Articles' }, { href: '/', label: 'book reviews' }, { href: '/', label: 'Poems' }, { href: '/', label: 'Poets' }, { href: '/', label: 'Short Stories' }, { href: '/', label: 'Authors' }]}
+                                            links={[{ href: '/articles', label: 'Articles' }, { href: '/book-reviews', label: 'book reviews' }, { href: '/poems', label: 'Poems' }, { href: '/short-stories', label: 'Short Stories' }]}
                                         />
                                         <NavItem
                                             title={"Activities"}
@@ -113,11 +113,11 @@ const Navbar = (props: Props) => {
                                     <div className="flex flex-col gap-y-8 ">
                                         <NavItem
                                             title={"About Us"}
-                                            links={[{ href: '/', label: 'who we are' }, { href: '/', label: 'people' }, { href: '/', label: 'contact us' },]}
+                                            links={[{ href: '/who-we-are', label: 'who we are' }, { href: '/', label: 'contact us' },]}
                                         />
                                         <NavItem
                                             title={"Support Us"}
-                                            links={[{ href: '/', label: 'submit piece' }
+                                            links={[{ href: '/write', label: 'submit piece' }
                                                 //  { href: '/', label: 'donate' }
                                             ]
                                             }
