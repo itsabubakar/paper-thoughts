@@ -47,14 +47,14 @@
 - [x] home page should pull content from firebase
 - [x] be able to edit your profile 2
 - [x] tweak explore page to work with pagination 
-- [] account page should show all everything written by you 1
-- [] dynamic account page should work 2
+- [x] account page should show all everything written by you 1
+- [x] dynamic account page should work 2
+- [] add search 1
+- [] fix links on homepage 2
 - [] complete who we are page 3
-- [] fix links on homepage 5
-- [] add search 5
+- [] fix loading state on write and editlayout
 - [] edit pages that don't need state to run on server 
 - [] add sharing functionalities 
-- [] fix loading state on write and editlayout
 - [] create a collection for featured articles and figure out a way to do it 9
 - [] add a states counter for posts views
 - [] create a collection to store new authors and poets and show them on author and poet page

@@ -9,8 +9,11 @@ import Modal from "react-modal";
 import EditProfileForm from "../_components/Modal/EditProfileForm";
 import { AppContext } from "../Context";
 import { useRouter } from "next/navigation";
-import { doc, getDoc, DocumentData } from "firebase/firestore";
+import { doc, getDoc, DocumentData, collection, query, where, getDocs } from "firebase/firestore";
 import { db } from "@/firebase";
+import StoryLink from "../_components/ShortStories/StoryLink";
+import Loading from "../_components/utils/Loading";
+import BookReview from "../_components/BookReviews/BookReview";
 
 type Props = {}
 type UserProfile = {
@@ -20,21 +23,49 @@ type UserProfile = {
     twitter: string;
     email: string;
 };
+type Item = {
+    id: string;
+    data: any
+    // ... other properties of the item
+};
 
 const Page = (props: Props) => {
-    const [activeTab, setActiveTab] = useState('shortStories');
+    const [activeTab, setActiveTab] = useState('short-stories');
     const [isModalOpen, setIsModalOpen] = useState(false);
     const { logout } = useContext(AppContext)
     const { user, profile, setProfile } = useContext(AppContext)
+    const [items, setItems] = useState<Item[]>([]);
+    const [loading, setLoading] = useState(true);
     const router = useRouter();
 
+    // Function to fetch items based on the active tab
+    const fetchItems = async () => {
+        if (user) {
+            const itemsRef = collection(db, activeTab);
+            const q = query(itemsRef, where("uid", "==", user.uid));
 
+            try {
+                const querySnapshot = await getDocs(q);
+                const fetchedItems = querySnapshot.docs.map(doc => ({
+                    id: doc.id,
+                    data: doc.data(),
+                }));
+                console.log(fetchedItems);
 
+                setItems(fetchedItems);
+            } catch (error) {
+                console.error("Error fetching items: ", error);
+            } finally {
+                setLoading(false); // Stop loading whether data is fetched or an error occurs
+            }
+        }
+    };
 
     useEffect(() => {
 
         const fetchProfile = async () => {
             if (user) {
+                setLoading(true); // Start loading when the activeTab changes and user exists
                 const profileRef = doc(db, 'users', user.uid);
                 try {
                     const docSnap = await getDoc(profileRef);
@@ -50,15 +81,15 @@ const Page = (props: Props) => {
                 }
             } else {
                 console.log('No user is signed in.');
-                router.push('/')
+                // router.push('/')
             }
         };
 
         fetchProfile();
-
+        fetchItems();
 
         console.log('user not logged in');
-    }, [user])
+    }, [user, activeTab])
 
 
     const handleTabClick = (tab: string) => {
@@ -75,7 +106,7 @@ const Page = (props: Props) => {
         setIsModalOpen(false);
     };
 
-    const handlSignOut = async () => {
+    const handleSignOut = async () => {
         try {
             await logout()
             router.push('/')
@@ -86,6 +117,8 @@ const Page = (props: Props) => {
 
         }
     }
+
+    const hasItemsToShow = items.length > 0;
 
     return (
         <div className="max-w-3xl mx-auto py-20">
@@ -107,7 +140,7 @@ const Page = (props: Props) => {
                     >
                         Edit Profile
                     </button>
-                    <button onClick={handlSignOut} className="ml-5 text-orange-500 hover:text-black hover:underline text-sm font-headers">Log out</button>
+                    <button onClick={handleSignOut} className="ml-5 text-orange-500 hover:text-black hover:underline text-sm font-headers">Log out</button>
 
                 </div>
 
@@ -117,9 +150,9 @@ const Page = (props: Props) => {
             <section className="pt-5">
                 <div className="flex font-headers font-medium border-b">
                     <div
-                        className={` cursor-pointer pr-4 py-1 text-sm  ${activeTab === 'shortStories' ? 'border-b-gray-700 border-b -mb-[0.6px]' : '-mb-0'
+                        className={` cursor-pointer pr-4 py-1 text-sm  ${activeTab === 'short-stories' ? 'border-b-gray-700 border-b -mb-[0.6px]' : '-mb-0'
                             }`}
-                        onClick={() => handleTabClick('shortStories')}
+                        onClick={() => handleTabClick('short-stories')}
                     >
                         Short Stories
                     </div>
@@ -138,33 +171,53 @@ const Page = (props: Props) => {
                         Articles
                     </div>
                     <div
-                        className={`cursor-pointer  px-4 py-1 text-sm  ${activeTab === 'bookmarks' ? 'border-b-gray-700 border-b -mb-[0.6px]' : '-mb-0'
+                        className={`cursor-pointer  px-4 py-1 text-sm  ${activeTab === 'book-reviews' ? 'border-b-gray-700 border-b -mb-[0.6px]' : '-mb-0'
                             }`}
-                        onClick={() => handleTabClick('bookmarks')}
+                        onClick={() => handleTabClick('book-reviews')}
                     >
-                        Bookmarks
+                        Book Reviews
                     </div>
                 </div>
 
                 <div className="p-4">
                     {/* Render content based on activeTab */}
-                    {activeTab === 'shortStories' &&
-                        <div>
-                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quasi, optio eum deleniti laboriosam enim libero dolorum placeat ut possimus doloribus aut expedita quidem vero distinctio a nam suscipit natus cupiditate!</p>
-                        </div>}
-                    {activeTab === 'poems' &&
+                    {loading && <div className="flex h-20 justify-center items-center">
+                        <Loading />
+                    </div>}
+                    {!loading && activeTab === 'short-stories' && hasItemsToShow && (
+                        items.map((item) => (
+                            <div className="" key={item.id}>
+                                <StoryLink shortStory={item} />
+                            </div>
+                        ))
+                    )}
+                    {!loading && activeTab === 'poems' && hasItemsToShow && (
                         <div className="grid justify-center md:grid-cols-2 gap-5 md:gap-y-14 pt-5">
-                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quasi, optio eum deleniti laboriosam enim libero dolorum placeat ut possimus doloribus aut expedita quidem vero distinctio a nam suscipit natus cupiditate!</p>
+                            {items.map((item) => (
 
-                        </div>}
-                    {activeTab === 'articles' &&
-                        <div>
-                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quasi, optio eum deleniti laboriosam enim libero dolorum placeat ut possimus doloribus aut expedita quidem vero distinctio a nam suscipit natus cupiditate!</p>
-                        </div>}
-                    {activeTab === 'bookmarks' &&
-                        <div>
-                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quasi, optio eum deleniti laboriosam enim libero dolorum placeat ut possimus doloribus aut expedita quidem vero distinctio a nam suscipit natus cupiditate!</p>
-                        </div>}
+                                <PoemLink poem={item} />
+                            ))}
+                        </div>
+                    )}
+                    {!loading && activeTab === 'articles' && hasItemsToShow && (
+                        items.map((item) => (
+                            <div className="" key={item.id}>
+                                {/* Render your article */}
+                                <Article article={item} />
+                            </div>
+                        ))
+                    )}
+                    {!loading && activeTab === 'book-reviews' && hasItemsToShow && (
+                        <div className="grid gap-x-5 gap-y-16 gap sm:grid-cols-3 justify-center align-center pt-12" >
+                            {items.map((item) => (
+
+                                <BookReview bookReview={item} />
+                            ))}
+                        </div>
+                    )}
+
+                    {/* If no items to show, render the no content message just once */}
+                    {!loading && !hasItemsToShow && (<p>No {activeTab} by this user.</p>)}
                 </div>
 
             </section>
