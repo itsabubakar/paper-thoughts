@@ -5,18 +5,29 @@ import { AiOutlineMenu, AiOutlineSearch, AiOutlineYoutube, AiOutlineInstagram, A
 import { FaXTwitter } from 'react-icons/fa6'
 import NavItem from "./NavItem"
 import { AppContext } from "../../Context"
-
+import { useRouter } from "next/navigation";
 
 
 type Props = {}
 const Navbar = (props: Props) => {
-    const [poetsLink, setPoetsLink] = useState(false)
-    const [authorsLink, setAuthorsLink] = useState(false)
+    const router = useRouter();
     const { menu, setMenu, user } = useContext(AppContext)
     const [loading, setLoading] = useState(true)
+    const [searchValue, setSearchValue] = useState('')
 
+    const createQueryString = (name: string, value: string) => {
+        const params = new URLSearchParams();
+        params.set(name, value);
 
+        return params.toString();
+    };
 
+    const handleSearch = (e: { preventDefault: () => void }) => {
+        e.preventDefault()
+        router.push(`/search?${createQueryString('search', searchValue)}`)
+
+        // console.log(createQueryString('search', searchValue))
+    }
     useEffect(() => {
         const checkAuthentication = async () => {
             await new Promise((resolve) => setTimeout(resolve, 300))
@@ -28,17 +39,17 @@ const Navbar = (props: Props) => {
     return (
         <nav className="font-headers fixed top-0 block w-full z-20 max-h-[72px] bg-white border-b border-b-gray-100 shadow-lg">
             <div className="max-w-7xl mx-auto flex  px-5 min-h-[72px] items-center bg-white border-b border-b-gray-100 font-medium ">
-                <div className=" ">
+                <div className="flex-1 flex justify-start">
                     <div><Link className=" link font-semibold lg:font-medium !hidden md:!block" href={user ? '/write' : '/login'}>Write</Link></div>
                     <div><Link className="md:hidden link font-semibold lg:font-medium" href={user ? '/write' : '/signup'}>{user ? 'Write' : 'Get Started'}</Link></div>
                 </div>
 
-                <Link href={'/'} className="mx-auto">
+                <Link href={'/'} className="flex-0">
                     <h1 className="text-center md:text-2xl underline decoration-orange-500 font-headers">PaperThoughts</h1>
                     <p className="font-headers text-xs underline decoration-orange-500 text-center">Where words come to life</p>
                 </Link>
 
-                <div className="flex gap-5 items-center ">
+                <div className="flex gap-5 items-center flex-1 justify-end">
 
 
                     {/* donate */}
@@ -64,7 +75,16 @@ const Navbar = (props: Props) => {
 
                     <div className="  ">
                         <div className="flex gap-5">
-                            <button><Link href={'/'}><AiOutlineSearch size={26} /></Link></button>
+                            <form className="hidden md:inline-flex border border-gray-300 px-5 py-1 rounded-full " onSubmit={handleSearch}>
+                                <input type="text"
+                                    onChange={(e) => setSearchValue(e.target.value)}
+                                    value={searchValue}
+                                    className="outline-none" placeholder="Search" />
+                                <button type="submit">
+
+                                    <AiOutlineSearch size={26} />
+                                </button>
+                            </form>
                             <button onClick={() => setMenu(!menu)}>
                                 {menu ? <AiOutlineClose size={26} /> : <AiOutlineMenu size={26} />}
                             </button>
@@ -135,7 +155,16 @@ const Navbar = (props: Props) => {
 
 
                                 </div>
+                                <form className=" mt-4 flex justify-between border border-gray-300 px-5 py-1 rounded-full " onSubmit={handleSearch}>
+                                    <input type="text"
+                                        onChange={(e) => setSearchValue(e.target.value)}
+                                        value={searchValue}
+                                        className="w-full outline-none" placeholder="Search" />
+                                    <button type="submit">
 
+                                        <AiOutlineSearch size={26} />
+                                    </button>
+                                </form>
                             </div>
 
 

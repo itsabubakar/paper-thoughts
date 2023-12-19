@@ -210,7 +210,7 @@ const Page = (props: Props) => {
                         ))
                     )}
 
-                    {!loading && activeTab === 'poems' && hasItemsToShow && (
+                    {!loading && activeTab === 'book-reviews' && hasItemsToShow && (
                         <div className="grid gap-x-5 gap-y-16 gap sm:grid-cols-3 justify-center align-center pt-12" >
                             {items.map((item) => (
 

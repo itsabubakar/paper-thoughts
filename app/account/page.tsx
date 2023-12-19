@@ -81,7 +81,7 @@ const Page = (props: Props) => {
                 }
             } else {
                 console.log('No user is signed in.');
-                // router.push('/')
+                router.push('/')
             }
         };
 
