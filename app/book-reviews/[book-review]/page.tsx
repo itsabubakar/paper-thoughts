@@ -118,7 +118,7 @@ const Page = () => {
 
             {/* related articles */}
 
-            <section>
+            {/* <section>
                 <h3 className="uppercase text-xl font-bold font-headers border-b border-border-color py-2 px-2">Related Articles</h3>
                 <div className="flex gap-2 justify-between py-8 flex-col sm:flex-row">
                     <RelatedArticle />
@@ -126,7 +126,7 @@ const Page = () => {
                     <RelatedArticle />
                 </div>
 
-            </section>
+            </section> */}
 
 
         </div>

@@ -14,7 +14,7 @@ const ShortStorySection = ({ shortStories }: Props) => {
                     return <StoryLink key={shortStory.id} shortStory={shortStory} />
                 })
             }
-            <Link className="capitalize font-headers block mt-5 underline hover:text-orange-500 font-semibold" href={'/'}>See all short stories</Link>
+            <Link className="capitalize font-headers block mt-5 underline hover:text-orange-500 font-semibold" href={'/short-stories'}>See all short stories</Link>
         </div>
     )
 }

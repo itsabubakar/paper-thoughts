@@ -46,71 +46,40 @@ const Page = () => {
     }, [user])
 
     const handleSubmit = async (e: any) => {
-        setLoading(true)
+        setLoading(true);
         e.preventDefault();
         console.log(tag);
 
         const postRef = collection(db, tag); // 'posts' is the name of the collection
         const newTag = tag.slice(0, -1); // removing the last s in the tag names
 
-        if (tag === "book-reviews") {
-            const newDoc = {
-                title,
-                tag: newTag,
-                imgUrl,
-                content: value,
-                uid: user?.uid,
-                authorName: user?.displayName,
-                createdAt: serverTimestamp(),
-            }
-            const docRef = await addDoc(postRef, newDoc)
+        const newDoc = {
+            title,
+            tag: newTag,
+            content: value,
+            uid: user?.uid,
+            authorName: user?.displayName,
+            createdAt: serverTimestamp(),
+            // Add genre only if it's a 'short-stories' collection
+            ...(tag === 'short-stories' && { genre }),
+            // Add imgUrl only if it's a 'book-reviews' collection
+            ...(tag === 'book-reviews' && { imgUrl }),
+        };
+
+        try {
+            const docRef = await addDoc(postRef, newDoc);
             // Get the ID of the newly created document
             const postId = docRef.id;
 
             // Redirect to the dynamic post page using the postId
-            router.push(`/${tag}/${postId}`);
-
-        } else if (tag === 'short-stories') {
-            {
-                const newDoc = {
-                    title,
-                    tag: newTag,
-                    genre,
-                    content: value,
-                    uid: user?.uid,
-                    authorName: user?.displayName,
-                    createdAt: serverTimestamp(),
-                }
-                const docRef = await addDoc(postRef, newDoc);
-                // Get the ID of the newly created document
-                const postId = docRef.id;
-
-                // Redirect to the dynamic post page using the postId
-                // router.push(`/${tag}/${postId}`);
-
-            }
-        } else {
-            {
-                const newDoc = {
-                    title,
-                    tag: newTag,
-                    content: value,
-                    uid: user?.uid,
-                    authorName: user?.displayName,
-                    createdAt: serverTimestamp(),
-                }
-                const docRef = await addDoc(postRef, newDoc);
-                // Get the ID of the newly created document
-                const postId = docRef.id;
-
-                // Redirect to the dynamic post page using the postId
-                router.push(`/${tag}/${postId}`);
-
-            }
+            await router.push(`/${tag}/${postId}`);
+        } catch (error) {
+            console.error("Error adding document: ", error);
+            // Handle the error state appropriately here
+            // For example, show an error message to the user
+        } finally {
+            setLoading(false);
         }
-
-
-        setLoading(false)
     };
 
 
@@ -126,7 +95,7 @@ const Page = () => {
                         type="text"
                         id="title"
                         value={title}
-                        onChange={(e) => setTitle(e.target.value)}
+                        onChange={(e) => setTitle(e.target.value.toLowerCase())}
                         placeholder="Title"
                         className="capitalize text-sm border-b border-gray-300 font-headers py-3 px-2 w-full placeholder:text-sm border"
                     />

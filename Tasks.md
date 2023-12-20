@@ -50,18 +50,21 @@
 - [x] account page should show all everything written by you 1
 - [x] dynamic account page should work 2
 - [x] add search 1
-- [] fix links on homepage 2
-- [] complete who we are page 3
+- [x] fix links on homepage 2
+- [x] change how documents is saved have them save in lowercase
 - [] create a collection to store new authors and poets and show them on author and poet page
-- [] change how documents is saved have them save in lowercase
-- [] render searched documents on search page
+- [] complete who we are page 3
+- [] add favicon
+- [x] add sharing functionalities 
+- [] use algolia to search
+- [] fix loading state on write and edit info
+
+- [x] render searched documents on search page
 - [] do an infinity scroll for the search
 - [] add backend for search making it completely server rendered
 - [] add backend for other pages turning them server rendered too
 - [] do an infinity scroll for the search
-- [] fix loading state on write and editlayout
 - [] edit pages that don't need state to run on server 
-- [] add sharing functionalities 
 - [] create a collection for featured articles and figure out a way to do it 9
 - [] add a states counter for posts views
 - [] authors should pull users with short stories 3

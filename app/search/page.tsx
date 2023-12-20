@@ -2,12 +2,14 @@
 import React, { useState, useEffect } from 'react';
 import { collection, query, where, orderBy, startAt, endAt, getDocs } from 'firebase/firestore';
 import { db } from '@/firebase';
+import SearchLink from '../_components/Search/SearchLink';
 
 
 
 const Page = ({ searchParams }: any) => {
     const { search } = searchParams;
     const [results, setResults] = useState([]);
+    const [isLoading, setIsLoading] = useState(false);
 
     useEffect(() => {
         if (search) {
@@ -15,12 +17,13 @@ const Page = ({ searchParams }: any) => {
         }
     }, [search]);
 
-    const performSearch = async (searchQuery) => {
+    const performSearch = async (searchQuery: string) => {
         console.log('Performing search for:', searchQuery);
+        setIsLoading(true);
 
         const collectionsToSearch = ['book-reviews', 'poems', 'short-stories', 'articles'];
 
-        let searchResults = [];
+        let searchResults: any = [];
         const searchLower = searchQuery.toLowerCase();
 
         for (const collectionName of collectionsToSearch) {
@@ -48,20 +51,28 @@ const Page = ({ searchParams }: any) => {
 
         console.log('Search results:', searchResults);
         setResults(searchResults);
+        setIsLoading(false);
     };
 
     return (
-        <div>
-            <h1>Search Results for: {search}</h1>
+        <div className=''>
+            <h2 className='pt-4 text-sm font-headers font-semibold'>Search Results for: {search}</h2>
             {/* Render your search results here */}
-            <ul>
-                {results.map((result, index) => (
-                    <li key={index}>
-                        {/* {result.id} - {JSON.stringify(result)} */}
-                        result
-                    </li>
-                ))}
-            </ul>
+            {isLoading ? ( // Check if the search is in progress
+                <div className='h-32 flex justify-center items-center'>
+                    <p className='font-headers font-medium'>Searching...</p>
+                </div>
+            ) : (
+                <ul>
+                    {results.length > 0 ? results.map((result, index) => (
+                        <SearchLink key={index} search={result} />
+                    )) : (
+                        <div className='h-32 flex justify-center items-center'>
+                            <p className='font-headers font-medium'>No results found for {search}</p>
+                        </div>
+                    )}
+                </ul>
+            )}
         </div>
     );
 };

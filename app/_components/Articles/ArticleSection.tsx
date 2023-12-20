@@ -13,7 +13,7 @@ const ArticleSection = ({ articles }: Props) => {
                     return <Article key={article.id} article={article} />
                 })
             }
-            <Link className="capitalize font-headers block mt-5 underline hover:text-orange-500 font-semibold" href={'/'}>See all articles</Link>
+            <Link className="capitalize font-headers block mt-5 underline hover:text-orange-500 font-semibold" href={'/articles'}>See all articles</Link>
         </div>
     )
 }

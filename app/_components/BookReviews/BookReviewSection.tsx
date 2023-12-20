@@ -18,7 +18,7 @@ const BookReviewSection = ({ bookReviews }: Props) => {
                     })
                 }
             </div>
-            <Link className="capitalize font-headers block mt-5 underline hover:text-orange-500 font-semibold" href={'/'}>See all book reviews</Link>
+            <Link className="capitalize font-headers block mt-5 underline hover:text-orange-500 font-semibold" href={'/book-reviews'}>See all book reviews</Link>
         </div>
     )
 }

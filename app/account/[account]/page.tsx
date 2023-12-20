@@ -197,7 +197,7 @@ const Page = (props: Props) => {
                         <div className="grid justify-center md:grid-cols-2 gap-5 md:gap-y-14 pt-5">
                             {items.map((item) => (
 
-                                <PoemLink poem={item} />
+                                <PoemLink key={item.id} poem={item} />
                             ))}
                         </div>
                     )}
@@ -214,7 +214,7 @@ const Page = (props: Props) => {
                         <div className="grid gap-x-5 gap-y-16 gap sm:grid-cols-3 justify-center align-center pt-12" >
                             {items.map((item) => (
 
-                                <BookReview bookReview={item} />
+                                <BookReview key={item.id} bookReview={item} />
                             ))}
                         </div>
                     )}

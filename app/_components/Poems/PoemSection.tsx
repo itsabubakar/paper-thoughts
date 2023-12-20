@@ -17,7 +17,7 @@ const PoemSection = ({ poems }: Props) => {
                     })
                 }
             </div>
-            <Link className="capitalize font-headers block mt-5 underline hover:text-orange-500 font-semibold" href={'/'}>See all poems</Link>
+            <Link className="capitalize font-headers block mt-5 underline hover:text-orange-500 font-semibold" href={'/poems'}>See all poems</Link>
         </section>
     )
 }
