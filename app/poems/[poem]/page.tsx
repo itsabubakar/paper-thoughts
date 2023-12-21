@@ -24,9 +24,6 @@ const Page = () => {
     // Construct the full URL using the router's pathname and the current host
     const fullUrl = typeof window !== 'undefined' ? window.location.href : '';
 
-    console.log(fullUrl);
-
-
 
     const articleId = params.poem
     const [poem, setPoem] = useState<Poem | null>(null);
@@ -84,7 +81,7 @@ const Page = () => {
                     <p className="uppercase font-body tracking-wider">By <Link className="underline transition-all duration-200 hover:text-orange-500 hover:no-underline" href={`/account/${poem.uid}`}>{poem.authorName}</Link></p>
                     {/* share */}
                     <div className=" pt-3 sm:pt-0">
-                        <Share />
+                        <Share url={fullUrl} />
 
                     </div>
 

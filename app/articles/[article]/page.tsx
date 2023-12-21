@@ -29,6 +29,9 @@ const Page = () => {
     const [post, setPost] = useState<Article | null>(null);
     const [notFound, setNotFound] = useState(false);
 
+    const fullUrl = typeof window !== 'undefined' ? window.location.href : '';
+
+
     useEffect(() => {
         const fetchArticle = async () => {
             if (articleId) {
@@ -87,7 +90,7 @@ const Page = () => {
                         <p className="uppercase font-body tracking-wider">By <Link className="underline transition-all duration-200 hover:text-orange-500 hover:no-underline" href={`/account/${post.uid}`}>{post.authorName}</Link></p>
                         {/* share */}
                         <div className=" pt-3 sm:pt-0">
-                            <Share />
+                            <Share url={fullUrl} />
 
                         </div>
 

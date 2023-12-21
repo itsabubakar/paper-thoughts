@@ -52,8 +52,9 @@
 - [x] add search 1
 - [x] fix links on homepage 2
 - [x] change how documents is saved have them save in lowercase
-- [] create a collection to store new authors and poets and show them on author and poet page
+- [x] create a collection to store new authors and poets 
 - [] complete who we are page 3
+- [] show them on author and poet page
 - [] add favicon
 - [x] add sharing functionalities 
 - [] use algolia to search

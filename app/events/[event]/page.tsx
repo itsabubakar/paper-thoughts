@@ -8,6 +8,8 @@ const Page = ({
 }: {
     params: { event: string };
 }) => {
+    const fullUrl = typeof window !== 'undefined' ? window.location.href : '';
+
     return (
         <div className="max-w-3xl mx-auto">
             <section className="pt-10 pb-8 text-center sm:text-left border-b border-border-color">
@@ -25,7 +27,7 @@ const Page = ({
                 {/* share */}
                 <div className="pt-3">
 
-                    <Share />
+                    <Share url={fullUrl} />
 
                 </div>
             </section>

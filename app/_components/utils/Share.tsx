@@ -4,6 +4,8 @@ import { AiOutlineMail, AiOutlinePrinter } from 'react-icons/ai';
 
 
 const SocialLinks = ({ url }: any) => {
+    console.log(url);
+
     const shareUrl = encodeURIComponent(url); // Replace with the URL you want to share
     const shareText = encodeURIComponent('Check this out!'); // Replace with the text you want to share
 

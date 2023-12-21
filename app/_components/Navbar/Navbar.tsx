@@ -59,19 +59,14 @@ const Navbar = (props: Props) => {
 
                     {/* Menu & Search */}
 
-                    {loading ? null : !user ? (
-                        <div className="  px-2 hidden md:flex items-center">
-                            <Link href={'/signup'} className=" capitalize text-center py-1  px-5  rounded-2xl hover:border-border-color hover:text-gray-500 transition duration-200 underline hover:decoration-orange-500"> sign up</Link>
-                            <Link href={'/login'} className=" capitalize text-center py-1  px-5  rounded-2xl hover:border-border-color hover:text-gray-500 transition duration-200 underline hover:decoration-orange-500">login</Link>
-                        </div>
-                    ) : (
-                        <div>
+                    {loading ? null : user &&
+                        <div className="hidden md:block">
                             <Link href={'/account'} className="text-white py-1 px-2 bg-black rounded-full block capitalize">
                                 {user?.displayName.split(' ')[0]}
                             </Link>
 
                         </div>
-                    )}
+                    }
 
                     <div className="  ">
                         <div className="flex gap-5">
@@ -155,16 +150,27 @@ const Navbar = (props: Props) => {
 
 
                                 </div>
-                                <form className=" mt-4 flex justify-between border border-gray-300 px-5 py-1 rounded-full " onSubmit={handleSearch}>
-                                    <input type="text"
-                                        onChange={(e) => setSearchValue(e.target.value)}
-                                        value={searchValue}
-                                        className="w-full outline-none" placeholder="Search" />
-                                    <button type="submit">
+                                <div className="max-w-md mx-auto flex items-center py-4 gap-2">
+                                    {loading ? null : user &&
+                                        <div className="block md:hidden">
+                                            <Link href={'/account'} className="text-white w-fit py-1 px-2 bg-black rounded-full block capitalize">
+                                                {user?.displayName.split(' ')[0]}
+                                            </Link>
 
-                                        <AiOutlineSearch size={26} />
-                                    </button>
-                                </form>
+                                        </div>
+                                    }
+                                    <form className="  w-full flex justify-between border border-gray-300 px-5 py-1 rounded-full " onSubmit={handleSearch}>
+                                        <input type="text"
+                                            onChange={(e) => setSearchValue(e.target.value)}
+                                            value={searchValue}
+                                            className="w-full outline-none" placeholder="Search" />
+                                        <button type="submit">
+
+                                            <AiOutlineSearch size={26} />
+                                        </button>
+                                    </form>
+                                </div>
+
                             </div>
 
 

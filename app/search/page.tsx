@@ -21,7 +21,7 @@ const Page = ({ searchParams }: any) => {
         console.log('Performing search for:', searchQuery);
         setIsLoading(true);
 
-        const collectionsToSearch = ['book-reviews', 'poems', 'short-stories', 'articles'];
+        const collectionsToSearch = ['book-reviews', 'poems', 'short-stories', 'articles', 'poets', 'authors'];
 
         let searchResults: any = [];
         const searchLower = searchQuery.toLowerCase();

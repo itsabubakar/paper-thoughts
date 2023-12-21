@@ -14,7 +14,7 @@ import parse from "html-react-parser";
 
 type Story = {
     title: string;
-    tag: string;
+    genre: string;
     content: string;
     uid: string;
     authorName: string;
@@ -26,6 +26,8 @@ const Page = () => {
     const storyId = params.story
     const [story, setPoem] = useState<Story | null>(null);
     const [notFound, setNotFound] = useState(false);
+
+    const fullUrl = typeof window !== 'undefined' ? window.location.href : '';
 
     useEffect(() => {
         const fetchContent = async () => {
@@ -70,7 +72,7 @@ const Page = () => {
                 </div>
 
                 {/* tag */}
-                <h2 className="text-orange-500 font-semibold tracking-widest capitalize font-headers text-xl">Romance</h2>
+                <h2 className="text-orange-500 font-semibold tracking-widest capitalize font-headers text-xl">{story.genre}</h2>
 
                 {/* header */}
                 <h1 className="text-4xl font-bold pb-2 font-headers capitalize">{story.title}</h1>
@@ -80,7 +82,7 @@ const Page = () => {
                     <p className="uppercase font-body tracking-wider">By <Link className="underline transition-all duration-200 hover:text-orange-500 hover:no-underline" href={`/account/${story.uid}`}>{story.authorName}</Link></p>
                     {/* share */}
                     <div className=" pt-3 sm:pt-0">
-                        <Share />
+                        <Share url={fullUrl} />
 
                     </div>
 

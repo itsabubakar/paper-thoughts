@@ -33,6 +33,9 @@ const Page = () => {
     const [bookReview, setBookReview] = useState<BookReview | null>(null);
     const [notFound, setNotFound] = useState(false);
 
+    const fullUrl = typeof window !== 'undefined' ? window.location.href : '';
+
+
     useEffect(() => {
         const fetchArticle = async () => {
             if (articleId) {
@@ -87,7 +90,7 @@ const Page = () => {
 
                     {/* share */}
                     <div className=" pt-3 sm:pt-0">
-                        <Share />
+                        <Share url={fullUrl} />
 
                     </div>
 

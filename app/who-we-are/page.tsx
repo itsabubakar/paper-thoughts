@@ -16,18 +16,38 @@ const Page = (props: Props) => {
             </section>
 
             <section className=" pb-5">
-                <h3 className="uppercase text-xl font-bold font-headers border-b border-border-color  py-2 px-2">Office of the president</h3>
-                <p className="font-headers font-semibold py-2 text-lg">Morgan Lastname, <span className="font-body font-normal">President</span></p>
-                <p className="font-headers font-semibold py-2 text-lg">Morgan Lastname, <span className="font-body font-normal">President</span></p>
-                <p className="font-headers font-semibold py-2 text-lg">Morgan Lastname, <span className="font-body font-normal">President</span></p>
-                <p className="font-headers font-semibold py-2 text-lg">Morgan Lastname, <span className="font-body font-normal">President</span></p>
-                <p className="font-headers font-semibold py-2 text-lg">Morgan Lastname, <span className="font-body font-normal">President</span></p>
+                <h3 className="uppercase text-xl font-bold font-headers border-b border-border-color  py-2 px-2">research and articles</h3>
+                <p className="font-headers font-semibold py-2 text-lg">Jamilat, <span className="font-body font-normal">Head</span></p>
+                <p className="font-headers font-semibold py-2 text-lg">Sadiq, <span className="font-body font-normal">Asst. Head</span></p>
+                <p className="font-headers font-semibold py-2 text-lg">Aisha</p>
+                <p className="font-headers font-semibold py-2 text-lg">Binshi</p>
+                <p className="font-headers font-semibold py-2 text-lg">Tanimu</p>
+                <p className="font-headers font-semibold py-2 text-lg">Halilu</p>
+                <p className="font-headers font-semibold py-2 text-lg">Dominik</p>
+                <p className="font-headers font-semibold py-2 text-lg">Nafeesa</p>
+                <p className="font-headers font-semibold py-2 text-lg">Emmanuella</p>
+
             </section>
 
             <section className=" pb-5">
-                <h3 className="uppercase text-xl font-bold font-headers border-b border-border-color  py-2 px-2">Finance and administration</h3>
-                <p className="font-headers font-semibold py-2 text-lg">Gabriel oguche, <span className="font-body font-normal">Accountant</span></p>
+                <h3 className="uppercase text-xl font-bold font-headers border-b border-border-color  py-2 px-2">media and design</h3>
+                <p className="font-headers font-semibold py-2 text-lg">Blue, <span className="font-body font-normal">Head</span></p>
+                <p className="font-headers font-semibold py-2 text-lg">Tobi, <span className="font-body font-normal">Asst. Head</span></p>
+                <p className="font-headers font-semibold py-2 text-lg">Mariam</p>
+                <p className="font-headers font-semibold py-2 text-lg">Grace</p>
+                <p className="font-headers font-semibold py-2 text-lg">Khaleema</p>
             </section>
+
+            <section className=" pb-5">
+                <h3 className="uppercase text-xl font-bold font-headers border-b border-border-color  py-2 px-2">PR</h3>
+                <p className="font-headers font-semibold py-2 text-lg">Gabriel, <span className="font-body font-normal">Head</span></p>
+                <p className="font-headers font-semibold py-2 text-lg">Khaleema, <span className="font-body font-normal">Asst. Head</span></p>
+                <p className="font-headers font-semibold py-2 text-lg">Warri</p>
+                <p className="font-headers font-semibold py-2 text-lg">Onye</p>
+                <p className="font-headers font-semibold py-2 text-lg">Kemi</p>
+                <p className="font-headers font-semibold py-2 text-lg">Felicity</p>
+            </section>
+
         </SectionWrapper>
     )
 }

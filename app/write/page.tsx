@@ -7,7 +7,7 @@ import { onAuthStateChanged } from "firebase/auth"
 import { auth } from "@/firebase"
 import dynamic from "next/dynamic"
 import { db } from '@/firebase';
-import { addDoc, collection, serverTimestamp } from 'firebase/firestore';
+import { addDoc, collection, doc, getDoc, serverTimestamp, setDoc } from 'firebase/firestore';
 import Loading from '../_components/utils/Loading';
 
 
@@ -51,7 +51,7 @@ const Page = () => {
         console.log(tag);
 
         const postRef = collection(db, tag); // 'posts' is the name of the collection
-        const newTag = tag.slice(0, -1); // removing the last s in the tag names
+        const newTag = tag.slice(0, -1); // removing the last 's' in the tag names
 
         const newDoc = {
             title,
@@ -60,23 +60,46 @@ const Page = () => {
             uid: user?.uid,
             authorName: user?.displayName,
             createdAt: serverTimestamp(),
-            // Add genre only if it's a 'short-stories' collection
             ...(tag === 'short-stories' && { genre }),
-            // Add imgUrl only if it's a 'book-reviews' collection
             ...(tag === 'book-reviews' && { imgUrl }),
         };
 
         try {
             const docRef = await addDoc(postRef, newDoc);
-            // Get the ID of the newly created document
             const postId = docRef.id;
+
+            // Check if the tag is either poems or short-stories
+            if (tag === 'poems' || tag === 'short-stories') {
+                // Define the collection name based on the tag
+                const authorCollectionName = tag === 'poems' ? 'poets' : 'authors';
+                const authorRef = collection(db, authorCollectionName);
+
+                // Create a reference to the author document with the user's uid
+                const authorDocRef = doc(authorRef, user?.uid);
+
+                // Check if the author document already exists
+                const authorDocSnap = await getDoc(authorDocRef);
+                console.log(authorDocSnap);
+
+                // If the author document does not exist, create it
+                if (!authorDocSnap.exists()) {
+                    await setDoc(authorDocRef, {
+                        uid: user?.uid,
+                        authorName: user?.displayName,
+                        title: user?.displayName.toLowerCase(),
+                        // Set 'author' to true if it's a short story, otherwise false
+                        author: tag === 'short-stories',
+                        // Set 'poet' to true if it's a poem, otherwise false
+                        poet: tag === 'poems'
+                    });
+                }
+            }
 
             // Redirect to the dynamic post page using the postId
             await router.push(`/${tag}/${postId}`);
         } catch (error) {
             console.error("Error adding document: ", error);
             // Handle the error state appropriately here
-            // For example, show an error message to the user
         } finally {
             setLoading(false);
         }

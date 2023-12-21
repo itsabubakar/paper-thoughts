@@ -11,6 +11,7 @@ const Page = ({
     params: { poet: string };
 }) => {
 
+    const fullUrl = typeof window !== 'undefined' ? window.location.href : '';
 
     return (
         <div className="max-w-3xl mx-auto">
@@ -26,7 +27,7 @@ const Page = ({
                 <h1 className="text-4xl font-bold pb-2 font-headers">Sadiq Bilyamin</h1>
 
                 <div className="pt-2">
-                    <Share />
+                    <Share url={fullUrl} />
                 </div>
             </section>
 
@@ -40,7 +41,7 @@ const Page = ({
 
             <section className="pb-6">
                 <h3 className="py-2 font-semibold capitalize font-headers border-t">Poets socials</h3>
-                <Share />
+                <Share url={fullUrl} />
             </section>
 
             <section className="pb-6">

@@ -23,6 +23,9 @@ type Account = {
     uid: string
     penName?: string
     about?: string
+    instagram?: string
+    twitter?: string
+
 }
 
 type Item = {
@@ -137,9 +140,27 @@ const Page = (props: Props) => {
                 <h3 className="text-xl font-headers font-medium capitalize">{account?.penName && account.penName}</h3>
                 <p className="font-body text lg py-2">{account?.about}</p>
                 <div className="flex py-3">
-                    <Link className="border p-2 border-gray-200 hover:text-orange-500" href={'/'}><FaXTwitter className="" size={22} /></Link>
-                    <Link className="border p-2 border-gray-200  hover:text-orange-500" href={'/'}><AiOutlineInstagram className="" size={22} /></Link>
-                    <Link className="border p-2 border-gray-200  hover:text-orange-500" href={'/'}><AiOutlineMail className="" size={22} /></Link>
+                    <a
+                        className={`border p-2 border-gray-200 ${account?.twitter ? 'hover:text-orange-500' : 'text-gray-500 cursor-not-allowed'}`}
+                        href={account?.twitter ? `https://twitter.com/${account.twitter}` : undefined}
+                        onClick={!account?.twitter ? (e) => e.preventDefault() : undefined}
+                    >
+                        <FaXTwitter size={22} />
+                    </a>
+                    <a
+                        className={`border p-2 border-gray-200 ${account?.instagram ? 'hover:text-orange-500' : 'text-gray-500 cursor-not-allowed'}`}
+                        href={account?.instagram ? `https://instagram.com/${account.instagram}` : undefined}
+                        onClick={!account?.instagram ? (e) => e.preventDefault() : undefined}
+                    >
+                        <AiOutlineInstagram size={22} />
+                    </a>
+                    <a
+                        className={`border p-2 border-gray-200 ${account?.email ? 'hover:text-orange-500' : 'text-gray-500 cursor-not-allowed'}`}
+                        href={account?.email ? `mailto:${account?.email}` : undefined}
+                        onClick={!account?.email ? (e) => e.preventDefault() : undefined}
+                    >
+                        <AiOutlineMail size={22} />
+                    </a>
 
                 </div>
 
@@ -155,7 +176,7 @@ const Page = (props: Props) => {
                             }`}
                         onClick={() => handleTabClick('short-stories')}
                     >
-                        Short Stories
+                        Stories
                     </div>
                     <div
                         className={`cursor-pointer  px-4 py-1 text-sm  ${activeTab === 'poems' ? 'border-b-gray-700 border-b -mb-[0.6px]' : '-mb-0'
@@ -176,7 +197,7 @@ const Page = (props: Props) => {
                             }`}
                         onClick={() => handleTabClick('book-reviews')}
                     >
-                        Book reviews
+                        Reviews
                     </div>
                 </div>
 

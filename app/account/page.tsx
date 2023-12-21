@@ -127,9 +127,27 @@ const Page = (props: Props) => {
                 <h3 className="text-xl font-headers font-medium capitalize">{profile.penName && profile.penName}</h3>
                 <p className="font-body text lg py-2">{profile.about}</p>
                 <div className="flex py-3">
-                    <Link className="border p-2 border-gray-200 hover:text-orange-500" href={'/'}><FaXTwitter className="" size={22} /></Link>
-                    <Link className="border p-2 border-gray-200  hover:text-orange-500" href={'/'}><AiOutlineInstagram className="" size={22} /></Link>
-                    <Link className="border p-2 border-gray-200  hover:text-orange-500" href={'/'}><AiOutlineMail className="" size={22} /></Link>
+                    <a
+                        className={`border p-2 border-gray-200 ${profile.twitter ? 'hover:text-orange-500' : 'text-gray-500 cursor-not-allowed'}`}
+                        href={profile.twitter ? `https://twitter.com/${profile.twitter}` : undefined}
+                        onClick={!profile.twitter ? (e) => e.preventDefault() : undefined}
+                    >
+                        <FaXTwitter size={22} />
+                    </a>
+                    <a
+                        className={`border p-2 border-gray-200 ${profile.instagram ? 'hover:text-orange-500' : 'text-gray-500 cursor-not-allowed'}`}
+                        href={profile.instagram ? `https://instagram.com/${profile.instagram}` : undefined}
+                        onClick={!profile.instagram ? (e) => e.preventDefault() : undefined}
+                    >
+                        <AiOutlineInstagram size={22} />
+                    </a>
+                    <a
+                        className={`border p-2 border-gray-200 ${profile.email ? 'hover:text-orange-500' : 'text-gray-500 cursor-not-allowed'}`}
+                        href={profile.email ? `mailto:${profile.email}` : undefined}
+                        onClick={!profile.email ? (e) => e.preventDefault() : undefined}
+                    >
+                        <AiOutlineMail size={22} />
+                    </a>
 
                 </div>
 
@@ -154,7 +172,7 @@ const Page = (props: Props) => {
                             }`}
                         onClick={() => handleTabClick('short-stories')}
                     >
-                        Short Stories
+                        Stories
                     </div>
                     <div
                         className={`cursor-pointer  px-4 py-1 text-sm  ${activeTab === 'poems' ? 'border-b-gray-700 border-b -mb-[0.6px]' : '-mb-0'
@@ -175,11 +193,11 @@ const Page = (props: Props) => {
                             }`}
                         onClick={() => handleTabClick('book-reviews')}
                     >
-                        Book Reviews
+                        Reviews
                     </div>
                 </div>
 
-                <div className="p-4">
+                <div className="">
                     {/* Render content based on activeTab */}
                     {loading && <div className="flex h-20 justify-center items-center">
                         <Loading />
