@@ -6,6 +6,7 @@ import ShortStorySection from "./_components/ShortStories/ShortStorySection";
 
 import { collectionGroup, getDocs, query, orderBy, limit } from 'firebase/firestore';
 import { db } from '@/firebase';
+import { getData } from "./_components/utils/utils";
 
 // Fetch data here
 
@@ -28,10 +29,12 @@ const fetchData: any = async (data: string) => {
 
 }
 
-const articles = await fetchData('articles');
-const bookReviews = await fetchData('book-reviews');
-const shortStories = await fetchData('short-stories');
-const poems = await fetchData('poems');
+const articles = await getData('articles');
+// const bookReviews = await fetchData('book-reviews');
+// const shortStories = await fetchData('short-stories');
+// const poems = await fetchData('poems');
+
+export const revalidate = 60
 
 export default function Home() {
 
@@ -40,9 +43,9 @@ export default function Home() {
     <main>
       <HeroSection />
       <ArticleSection articles={articles} />
-      <BookReviewSection bookReviews={bookReviews} />
-      <ShortStorySection shortStories={shortStories} />
-      <PoemSection poems={poems} />
+      {/* <BookReviewSection bookReviews={bookReviews} /> */}
+      {/* <ShortStorySection shortStories={shortStories} /> */}
+      {/* <PoemSection poems={poems} /> */}
     </main>
   )
 }

@@ -101,7 +101,7 @@ const Page = () => {
             <section className="sm:flex flex-row-reverse font-body pt-8 pb-4 text-xl text-gray-800 border-b border-border-color gap-x-16">
                 <div className="sm:w-1/4 items-end ">
                     <Image
-                        src={bookReview.imgUrl}
+                        src={bookReview.imgUrl ? bookReview.imgUrl : ''}
                         alt="Season of Crimson Blossoms Cover"
                         width={200}
                         height={400}

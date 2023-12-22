@@ -54,6 +54,11 @@
 - [x] change how documents is saved have them save in lowercase
 - [x] create a collection to store new authors and poets 
 - [] complete who we are page 3
+- [] add comments section
+- [] fix server side rendering on homepage
+- [] fix navbar links on the bottom
+- [] add edit post
+- [] add delete post
 - [] show them on author and poet page
 - [] add favicon
 - [x] add sharing functionalities 
