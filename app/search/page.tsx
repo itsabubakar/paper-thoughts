@@ -5,7 +5,6 @@ import { db } from '@/firebase';
 import SearchLink from '../_components/Search/SearchLink';
 
 
-
 const Page = ({ searchParams }: any) => {
     const { search } = searchParams;
     const [results, setResults] = useState([]);

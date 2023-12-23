@@ -24,7 +24,7 @@ const Article = ({ article }: Article) => {
     return (
         <div className="border-b border-[#c7c7c7] py-5">
             <Link href={`/articles/${article.id}`}>
-                <p className="text-orange-500 font-semibold tracking-wider capitalize pb-1 font-headers">{article.data?.tag}</p>
+                <p className="text-orange-500 font-semibold tracking-wider capitalize pb-1 font-headers">{article.data?.tag.slice(0, -1)}</p>
                 <h2 className="text-xl font-semibold pb-2 font-headers capitalize">{article.data?.title} </h2>
                 <div className="flex">
 

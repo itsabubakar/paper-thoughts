@@ -2,6 +2,7 @@ import Link from "next/link"
 import FooterNav from "./FooterNav"
 import { AiOutlineInstagram, AiOutlineYoutube } from "react-icons/ai"
 import { FaXTwitter } from "react-icons/fa6"
+import NavItem from "../Navbar/NavItem"
 
 type Props = {}
 const Footer = (props: Props) => {
@@ -13,22 +14,23 @@ const Footer = (props: Props) => {
                 <p className="font-headers text-sm underline decoration-orange-500 text-center">Where words come to life</p>
             </Link>
             <div className=" flex gap-y-5 flex-wrap justify-between">
-                <FooterNav
-                    title={'Explore'}
-                    linkItem={['Articles', 'book reviews', 'Poems', 'Poets', 'Short Stories', 'Authors']}
+                <NavItem
+                    title={"Explore"}
+                    links={[{ href: '/articles', label: 'Articles' }, { href: '/book-reviews', label: 'book reviews' }, { href: '/poems', label: 'Poems' }, { href: '/short-stories', label: 'Short Stories' }]}
                 />
-                <FooterNav
-                    title={'Activities'}
-                    linkItem={['events', 'contests']}
+                <NavItem
+                    title={"About Us"}
+                    links={[{ href: '/who-we-are', label: 'who we are' }, { href: '/contact', label: 'contact us' },]}
                 />
-                <FooterNav
-                    title={'About Us'}
-                    linkItem={['who we are', 'people', 'contact us']}
+                <NavItem
+                    title={"Activities"}
+                    links={[{ href: '/events', label: 'events' }]}
                 />
-
-                <FooterNav
-                    title={'Support Us'}
-                    linkItem={['Donate']}
+                <NavItem
+                    title={"Support Us"}
+                    links={[{ href: '/write', label: 'submit piece' },
+                        //  { href: '/', label: 'donate' }
+                    ]}
                 />
             </div>
             <div className=" flex justify-center pt-2">

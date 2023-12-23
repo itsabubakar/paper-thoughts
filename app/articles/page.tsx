@@ -133,8 +133,8 @@ const Page = () => {
                         <p className="text-sm my-2 font-headers font-semibold">
                             Showing {startIndex} to {endIndex} of {totalArticles} articles
                         </p>
-                        {articles.map(article => (
-                            <Article key={article.id} article={article} />
+                        {articles.map((article, index) => (
+                            <Article key={index} article={article} />
                         ))}
                     </div>
                 )}

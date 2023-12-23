@@ -11,7 +11,12 @@ const SocialLinks = ({ url }: any) => {
 
     const twitterHref = `https://twitter.com/intent/tweet?url=${shareUrl}&text=${shareText}`;
     const emailHref = `mailto:?subject=${shareText}&body=${shareUrl}`;
-    const printHref = `javascript:window.print();`;
+
+    // Function to handle print action
+    const handlePrint = () => {
+        window.print();
+    };
+
     return (
         <div className="flex pt-3 sm:pt-0">
             <a className="border p-2 border-gray-200 hover:text-orange-500" href={twitterHref} target="_blank" rel="noopener noreferrer">
@@ -20,9 +25,10 @@ const SocialLinks = ({ url }: any) => {
             <a className="border p-2 border-gray-200 hover:text-orange-500" href={emailHref}>
                 <AiOutlineMail size={22} />
             </a>
-            <a className="border p-2 border-gray-200 hover:text-orange-500" href={printHref}>
+            {/* Use an event handler instead of the href attribute for printing */}
+            <button className="border p-2 border-gray-200 hover:text-orange-500" onClick={handlePrint}>
                 <AiOutlinePrinter size={22} />
-            </a>
+            </button>
         </div>
     );
 }

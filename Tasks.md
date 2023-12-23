@@ -53,15 +53,15 @@
 - [x] fix links on homepage 2
 - [x] change how documents is saved have them save in lowercase
 - [x] create a collection to store new authors and poets 
+- [x] fix server side rendering on homepage
+- [x] fix navbar links on the bottom
+- [x] add delete post
+- [x] add edit post
+- [x] add sharing functionalities 
 - [] complete who we are page 3
 - [] add comments section
-- [] fix server side rendering on homepage
-- [] fix navbar links on the bottom
-- [] add edit post
-- [] add delete post
 - [] show them on author and poet page
 - [] add favicon
-- [x] add sharing functionalities 
 - [] use algolia to search
 - [] fix loading state on write and edit info
 

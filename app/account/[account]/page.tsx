@@ -2,16 +2,12 @@
 import { getDoc, doc, collection, getDocs, query, where } from "firebase/firestore";
 import { db } from "@/firebase";
 
-import Link from "next/link";
-import { useContext, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { AiOutlineInstagram, AiOutlineMail, AiOutlinePrinter } from "react-icons/ai";
 import { FaXTwitter } from "react-icons/fa6";
 import Article from "../../_components/Articles/Article";
 import PoemLink from "../../_components/Poems/PoemLink";
-import Modal from "react-modal";
-import EditProfileForm from "../../_components/Modal/EditProfileForm";
-import { AppContext } from "../../Context";
-import { useRouter, useParams } from "next/navigation";
+import { useParams } from "next/navigation";
 import Loading from "@/app/_components/utils/Loading";
 import StoryLink from "@/app/_components/ShortStories/StoryLink";
 import BookReview from "@/app/_components/BookReviews/BookReview";

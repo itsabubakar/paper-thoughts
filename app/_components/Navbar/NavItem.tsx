@@ -1,6 +1,4 @@
 import Link from "next/link"
-import { useContext } from "react";
-import { AppContext } from "../../Context";
 
 type Props = {
     title: string
@@ -10,17 +8,15 @@ type Props = {
     }[]
 }
 const NavItem = ({ title, links }: Props) => {
-    const { menu, setMenu } = useContext(AppContext)
 
 
     return (
         <div className="">
-            <h2 className="pb-3 uppercase font-medium">{title}</h2>
+            <h2 className="pb-3 uppercase font-medium font-headers">{title}</h2>
             <ul>
                 {
                     links.map((link, index) => (
-                        <li key={index}><Link onClick={() => setMenu(!menu)
-                        } className="inner-menu-item" href={link.href} >{link.label}</Link></li>
+                        <li key={index}><Link className="inner-menu-item font-body" href={link.href} >{link.label}</Link></li>
                     ))
                 }
             </ul>

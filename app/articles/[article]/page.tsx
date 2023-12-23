@@ -1,8 +1,9 @@
 'use client'
 
-import { useParams } from 'next/navigation'
-import { useEffect, useState } from 'react';
-import { doc, getDoc, DocumentSnapshot } from 'firebase/firestore';
+import Modal from "react-modal";
+import { useParams, useRouter } from 'next/navigation'
+import { useContext, useEffect, useState } from 'react';
+import { doc, getDoc, DocumentSnapshot, deleteDoc } from 'firebase/firestore';
 import { db } from '@/firebase';
 
 import RelatedArticle from "@/app/_components/Articles/RelatedArticle";
@@ -11,6 +12,9 @@ import { MdOutlineArrowBackIosNew } from 'react-icons/md'
 import Share from "@/app/_components/utils/Share";
 import parse from "html-react-parser";
 import Loading from '@/app/_components/utils/Loading';
+import { AppContext } from '@/app/Context';
+import DateFormat from '@/app/_components/utils/DateFormat';
+import ConfirmDelete from "@/app/_components/utils/ConfirmDelete";
 
 interface Article {
     title: string;
@@ -18,18 +22,39 @@ interface Article {
     content: string;
     uid: string;
     authorName: string;
+    createdAt: {
+        seconds: number;
+    };
+    editedOn?: {
+        seconds: number;
+    };
 }
 
 const Page = () => {
 
     const params = useParams()
-    console.log(params.article);
+    const router = useRouter()
+    const { user, profile, setProfile } = useContext(AppContext)
+    const [isModalOpen, setIsModalOpen] = useState(false);
 
-    const articleId = params.article
+
+
+    const articleId: any = params.article
+
     const [post, setPost] = useState<Article | null>(null);
     const [notFound, setNotFound] = useState(false);
 
     const fullUrl = typeof window !== 'undefined' ? window.location.href : '';
+
+    const openModal = () => {
+        setIsModalOpen(true);
+        console.log('test function');
+
+    };
+
+    const closeModal = () => {
+        setIsModalOpen(false);
+    };
 
 
     useEffect(() => {
@@ -53,6 +78,10 @@ const Page = () => {
 
         fetchArticle();
     }, [articleId]);
+
+
+
+
 
     if (!post) {
         if (notFound) {
@@ -80,7 +109,7 @@ const Page = () => {
                     </div>
 
                     {/* tag */}
-                    <h2 className="text-orange-500 font-semibold tracking-widest capitalize font-headers text-xl">{post.tag}</h2>
+                    <h2 className="text-orange-500 font-semibold tracking-widest capitalize font-headers text-xl">{post.tag.slice(0, -1)}</h2>
 
                     {/* header */}
                     <h1 className="text-4xl font-bold pb-2 font-headers capitalize">{post.title}</h1>
@@ -95,13 +124,42 @@ const Page = () => {
                         </div>
 
                     </div>
+
+                    <div className='font-headers py-2 text-gray-700'>
+                        <p><DateFormat timestamp={post?.createdAt.seconds} /></p>
+                        {post.editedOn && <p>Edited on <DateFormat timestamp={post?.editedOn?.seconds} /></p>}
+
+                    </div>
+                    {
+                        user?.uid === post.uid && <div className='flex gap-4 py-2 font-headers'>
+                            <Link className='font-semibold hover:underline ' href={`/write/${articleId}?collection=${post.tag}`}>Edit</Link>
+                            <button className='text-red-500 font-semibold hover:underline' onClick={openModal}>
+                                Delete
+                            </button>
+                        </div>
+                    }
+
                 </section>
 
                 {/* content */}
 
-                <section className="font-body pt-8 pb-4 text-xl text-gray-800 border-b border-border-color prose prose-p:pb-4 mb-10">
+                <section className="break-words font-body pt-8 pb-4 text-xl text-gray-800 border-b border-border-color prose prose-p:pb-4 mb-10 ">
                     {parse(post.content)}
                 </section>
+
+                <Modal
+                    isOpen={isModalOpen}
+                    onRequestClose={closeModal}
+                    contentLabel="Edit Profile Modal"
+                    className="modal-content "
+                    overlayClassName="modal-overlay"
+                    ariaHideApp={false}
+                >
+                    <h2 className="font-headers font-semibold py-1">Are you sure?</h2>
+                    {/* Use the new EditProfileForm component */}
+
+                    <ConfirmDelete articleId={articleId} closeModal={closeModal} />
+                </Modal>
 
 
 

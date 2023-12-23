@@ -1,5 +1,4 @@
 'use client';
-import Link from "next/link";
 import { useContext, useEffect, useState } from "react";
 import { AiOutlineInstagram, AiOutlineMail, AiOutlinePrinter } from "react-icons/ai";
 import { FaXTwitter } from "react-icons/fa6";
