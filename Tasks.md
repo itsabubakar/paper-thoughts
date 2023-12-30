@@ -58,6 +58,8 @@
 - [x] add delete post
 - [x] add edit post
 - [x] add sharing functionalities 
+- [x] create workflowly to manage paper thoughts
+- [x] clean up mobile view padding
 - [] complete who we are page 3
 - [] add comments section
 - [] show them on author and poet page

@@ -36,27 +36,38 @@ export default function Home() {
           id: doc.id,
           data: doc.data(),
         }));
-        console.log(articlesData);
 
-        setArticles(articlesData);
+        setArticles(articlesData as SetStateAction<never[]>);
 
 
         // Fetch latest 4 book reviews
         const bookReviewsQuery = query(collectionGroup(db, 'book-reviews'), orderBy('createdAt', 'desc'), limit(4));
         const bookReviewsSnapshot = await getDocs(bookReviewsQuery);
-        setBookReviews(bookReviewsSnapshot.docs.map(doc => doc.data() as DocumentData) as SetStateAction<never[]>);
+        const bookReviewData = bookReviewsSnapshot.docs.map((doc) => ({
+          id: doc.id,
+          data: doc.data(),
+        }))
+        setBookReviews(bookReviewData as SetStateAction<never[]>);
 
 
 
         // Fetch latest 4 short stories
         const shortStoriesQuery = query(collectionGroup(db, 'short-stories'), orderBy('createdAt', 'desc'), limit(4));
         const shortStoriesSnapshot = await getDocs(shortStoriesQuery);
-        setShortStories(shortStoriesSnapshot.docs.map(doc => doc.data() as DocumentData) as SetStateAction<never[]>);
+        const shortStoriesData = shortStoriesSnapshot.docs.map((doc) => ({
+          id: doc.id,
+          data: doc.data(),
+        }))
+        setShortStories(shortStoriesData as SetStateAction<never[]>);
 
         // Fetch latest 4 poems
         const poemsQuery = query(collectionGroup(db, 'poems'), orderBy('createdAt', 'desc'), limit(4));
         const poemsSnapshot = await getDocs(poemsQuery);
-        setPoems(poemsSnapshot.docs.map(doc => doc.data() as DocumentData) as SetStateAction<never[]>);
+        const poemData = poemsSnapshot.docs.map((doc) => ({
+          id: doc.id,
+          data: doc.data(),
+        }))
+        setPoems(poemData as SetStateAction<never[]>);
       } catch (error) {
         console.error('Error fetching data:', error);
       }
