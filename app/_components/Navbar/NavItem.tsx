@@ -1,4 +1,7 @@
+'use client'
+import { AppContext } from "@/app/Context";
 import Link from "next/link"
+import { useContext } from "react";
 
 type Props = {
     title: string
@@ -8,6 +11,7 @@ type Props = {
     }[]
 }
 const NavItem = ({ title, links }: Props) => {
+    const { menu, setMenu } = useContext(AppContext)
 
 
     return (
@@ -16,7 +20,7 @@ const NavItem = ({ title, links }: Props) => {
             <ul>
                 {
                     links.map((link, index) => (
-                        <li key={index}><Link className="inner-menu-item font-body" href={link.href} >{link.label}</Link></li>
+                        <li onClick={() => setMenu(!menu)} key={index}><Link className="inner-menu-item font-body" href={link.href} >{link.label}</Link></li>
                     ))
                 }
             </ul>

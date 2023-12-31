@@ -63,8 +63,10 @@
 - [] complete who we are page 3
 - [] add comments section
 - [] show them on author and poet page
-- [] add favicon
 - [] use algolia to search
+
+- [] add featured article
+- [] add favicon
 - [] fix loading state on write and edit info
 
 - [x] render searched documents on search page

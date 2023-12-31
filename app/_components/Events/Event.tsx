@@ -1,5 +1,6 @@
 import Link from "next/link";
 
+
 type Props = {
     type: string;
 }
