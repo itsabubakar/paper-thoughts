@@ -15,7 +15,6 @@ const Navbar = (props: Props) => {
     const [loading, setLoading] = useState(true)
     const [searchValue, setSearchValue] = useState('')
 
-    console.log(user?.admin);
 
 
     const createQueryString = (name: string, value: string) => {
@@ -43,8 +42,13 @@ const Navbar = (props: Props) => {
         <nav className="font-headers fixed top-0 block w-full z-20 max-h-[72px] bg-white border-b border-b-gray-100 shadow-lg">
             <div className="max-w-7xl mx-auto flex  px-5 min-h-[72px] items-center bg-white border-b border-b-gray-100 font-medium ">
                 <div className="flex-1 flex justify-start">
-                    <div><Link className=" link font-semibold lg:font-medium !hidden md:!block" href={user && user.admin ? '/write' : '/get-started'}>{user && user.admin ? 'write' : 'Get Started'}</Link></div>
-                    <div><Link className="md:hidden link font-semibold lg:font-medium" href={user && user.admin ? '/write' : '/get-started'}>{user && user.admin ? 'Write' : 'Get Started'}</Link></div>
+                    {
+                        user ?
+                            <div><Link className=" link font-semibold lg:font-medium " href={'/write'}>Writes</Link></div> :
+                            <div><Link className=" link font-semibold lg:font-medium " href={'/login'}>Get Started</Link></div>
+                    }
+
+                    {/* <div><Link className="md:hidden link font-semibold lg:font-medium" href={user && user.admin ? '/write' : '/get-started'}>{user && user.admin ? 'Write' : 'Get Started now'}</Link></div> */}
                 </div>
 
                 <Link href={'/'} className="flex-0">
