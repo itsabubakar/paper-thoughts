@@ -5,8 +5,8 @@ const GetStarted = (props: Props) => {
             <h1 className="font-headers  text-2xl font-bold text-center pb-4">Get Started</h1>
 
             <p className="mb-4 font-body">
-                Welcome to our community! We're thrilled that you're interested in contributing to our platform.
-                If you're passionate about writing and eager to share your insights, ideas, or stories, we offer a couple of ways to get involved.
+                Welcome to our community! We&apos;re thrilled that you&apos;re interested in contributing to our platform.
+                If you&apos;re passionate about writing and eager to share your insights, ideas, or stories, we offer a couple of ways to get involved.
             </p>
 
             <h2 className="font-headers  text-xl font-bold text-center pb-4">Submit Your Post via Email</h2>
@@ -24,14 +24,14 @@ const GetStarted = (props: Props) => {
 
             <p className="mb-4 font-body">
                 Our team will review your submission and get back to you as soon as possible. If your post aligns with our content standards and themes,
-                we'll feature it on our website!
+                we&apos;ll feature it on our website!
             </p>
 
             <h2 className="font-headers  text-xl font-bold  pb-4">Apply as a Writer</h2>
 
             <p className="mb-4 font-jost">
-                If you're looking for a more consistent writing opportunity, why not apply to become one of our contributing writers? As a writer for our platform,
-                you'll have the chance to reach a wider audience and be a part of our dynamic content team.
+                If you&apos;re looking for a more consistent writing opportunity, why not apply to become one of our contributing writers? As a writer for our platform,
+                you&apos;ll have the chance to reach a wider audience and be a part of our dynamic content team.
             </p>
 
             <p className="mb-4 font-jost">
@@ -41,22 +41,22 @@ const GetStarted = (props: Props) => {
             </p>
 
             <ul className="list-disc list-inside mb-4 font-jost">
-                <li>A cover letter explaining why you want to write for us and what topics you're passionate about.</li>
+                <li>A cover letter explaining why you want to write for us and what topics you&apos;re passionate about.</li>
                 <li>At least two writing samples that showcase your ability to engage and inform readers.</li>
             </ul>
 
             <p className="mb-4 font-jost">
-                We're always on the lookout for talented writers who bring fresh perspectives to our website. If you're ready to make an impact with your words,
-                we can't wait to hear from you!
+                We&apos;re always on the lookout for talented writers who bring fresh perspectives to our website. If you&apos;re ready to make an impact with your words,
+                we can&apos;t wait to hear from you!
             </p>
 
             <p className="mb-4 font-jost">
-                Thank you for your interest in contributing to our community. We're looking forward to reading your submissions and potentially welcoming you
+                Thank you for your interest in contributing to our community. We&apos;re looking forward to reading your submissions and potentially welcoming you
                 to our team of writers.
             </p>
 
             <p className="text-center font-font">
-                Let's create something amazing together!
+                Let&apos;s create something amazing together!
             </p>
 
             <p className="text-center font-jost mt-4">
