@@ -15,6 +15,9 @@ const Navbar = (props: Props) => {
     const [loading, setLoading] = useState(true)
     const [searchValue, setSearchValue] = useState('')
 
+    console.log(user?.admin);
+
+
     const createQueryString = (name: string, value: string) => {
         const params = new URLSearchParams();
         params.set(name, value);
@@ -40,8 +43,8 @@ const Navbar = (props: Props) => {
         <nav className="font-headers fixed top-0 block w-full z-20 max-h-[72px] bg-white border-b border-b-gray-100 shadow-lg">
             <div className="max-w-7xl mx-auto flex  px-5 min-h-[72px] items-center bg-white border-b border-b-gray-100 font-medium ">
                 <div className="flex-1 flex justify-start">
-                    <div><Link className=" link font-semibold lg:font-medium !hidden md:!block" href={user ? '/write' : '/login'}>Write</Link></div>
-                    <div><Link className="md:hidden link font-semibold lg:font-medium" href={user ? '/write' : '/signup'}>{user ? 'Write' : 'Get Started'}</Link></div>
+                    <div><Link className=" link font-semibold lg:font-medium !hidden md:!block" href={user && user.admin ? '/write' : '/get-started'}>{user && user.admin ? 'write' : 'Get Started'}</Link></div>
+                    <div><Link className="md:hidden link font-semibold lg:font-medium" href={user && user.admin ? '/write' : '/get-started'}>{user && user.admin ? 'Write' : 'Get Started'}</Link></div>
                 </div>
 
                 <Link href={'/'} className="flex-0">
@@ -101,7 +104,7 @@ const Navbar = (props: Props) => {
                                     />
                                     <NavItem
                                         title={"Support Us"}
-                                        links={[{ href: '/write', label: 'submit piece' },
+                                        links={[{ href: '/get-started', label: 'submit piece' },
                                             //  { href: '/', label: 'donate' }
                                         ]}
                                     />
@@ -132,7 +135,7 @@ const Navbar = (props: Props) => {
                                         />
                                         <NavItem
                                             title={"Support Us"}
-                                            links={[{ href: '/write', label: 'submit piece' }
+                                            links={[{ href: '/get-started', label: 'submit piece' }
                                                 //  { href: '/', label: 'donate' }
                                             ]
                                             }

@@ -12,20 +12,21 @@ const Page = (props: Props) => {
 
             <section className=" pb-5">
                 <h3 className="uppercase text-xl font-bold font-headers border-b border-border-color  py-2 px-2">Patron</h3>
-                <p className="font-headers font-semibold py-2 text-lg">Wole Soyinka, <span className="font-body font-normal">Patron</span></p>
+                <p className="font-headers font-semibold py-2 text-lg">Dr. Alim Sabur, <span className="font-body font-normal">Patron</span></p>
             </section>
 
             <section className=" pb-5">
                 <h3 className="uppercase text-xl font-bold font-headers border-b border-border-color  py-2 px-2">research and articles</h3>
-                <p className="font-headers font-semibold py-2 text-lg">Jamilat, <span className="font-body font-normal">Head</span></p>
-                <p className="font-headers font-semibold py-2 text-lg">Sadiq, <span className="font-body font-normal">Asst. Head</span></p>
-                <p className="font-headers font-semibold py-2 text-lg">Aisha</p>
-                <p className="font-headers font-semibold py-2 text-lg">Binshi</p>
+                <p className="font-headers font-semibold py-2 text-lg">Jamilat Anavami Adagiri, <span className="font-body font-normal">Head</span></p>
+                <p className="font-headers font-semibold py-2 text-lg">Sadiq Bilyamin, <span className="font-body font-normal">Asst. Head</span></p>
+                <p className="font-headers font-semibold py-2 text-lg">Aisha Safiyanu</p>
+                <p className="font-headers font-semibold py-2 text-lg">Binshi Musa-Bentley</p>
                 <p className="font-headers font-semibold py-2 text-lg">Tanimu</p>
                 <p className="font-headers font-semibold py-2 text-lg">Halilu</p>
-                <p className="font-headers font-semibold py-2 text-lg">Dominik</p>
-                <p className="font-headers font-semibold py-2 text-lg">Nafeesa</p>
+                <p className="font-headers font-semibold py-2 text-lg">Kehinde Dominik</p>
+                <p className="font-headers font-semibold py-2 text-lg">Nafisa Isah</p>
                 <p className="font-headers font-semibold py-2 text-lg">Emmanuella</p>
+                <p className="font-headers font-semibold py-2 text-lg">Aigbe Ehiosun Itohan Michelle</p>
 
             </section>
 
@@ -40,8 +41,8 @@ const Page = (props: Props) => {
 
             <section className=" pb-5">
                 <h3 className="uppercase text-xl font-bold font-headers border-b border-border-color  py-2 px-2">PR</h3>
-                <p className="font-headers font-semibold py-2 text-lg">Gabriel, <span className="font-body font-normal">Head</span></p>
-                <p className="font-headers font-semibold py-2 text-lg">Khaleema, <span className="font-body font-normal">Asst. Head</span></p>
+                <p className="font-headers font-semibold py-2 text-lg">Gabriel Oguche, <span className="font-body font-normal">Head</span></p>
+                <p className="font-headers font-semibold py-2 text-lg">Kalimah Ibrahim, <span className="font-body font-normal">Asst. Head</span></p>
                 <p className="font-headers font-semibold py-2 text-lg">Warri</p>
                 <p className="font-headers font-semibold py-2 text-lg">Onye</p>
                 <p className="font-headers font-semibold py-2 text-lg">Kemi</p>

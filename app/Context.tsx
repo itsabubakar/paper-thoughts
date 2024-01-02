@@ -2,12 +2,12 @@
 import React, { createContext, useEffect, useState, ReactNode, useContext } from "react";
 import { signInWithPopup, signOut, onAuthStateChanged, GoogleAuthProvider } from "firebase/auth";
 import { auth, db } from "@/firebase";
-import { doc, setDoc, collection, query, where, getDocs } from 'firebase/firestore';
 
 type User = {
     uid: string;
     email: string;
     displayName: string;
+    admin?: boolean;
     // Add other user details as needed
 };
 
@@ -50,7 +50,8 @@ const defaultContext = {
         about: '',
         instagram: '',
         twitter: '',
-        email: ''
+        email: '',
+        admin: false,
     },
     setProfile: () => { }
 };
