@@ -14,7 +14,7 @@ const GetStarted = (props: Props) => {
             <p className="mb-4 font-body">
                 Have a post ready to go? Great! You can submit your content to us directly via email. Please send your post to
                 <span className="font-bold"> <a href="mailto:submissions@paperthoughts.org" className="text-orange-500 hover:text-orange-800">submissions@paperthoughts.org</a> </span>
-                with the subject line "Post Submission." Make sure to include the following:
+                with the subject line &quot;Post Submission.&quot; Make sure to include the following:
             </p>
 
             <ul className="list-disc list-inside mb-4 font-body">
@@ -37,7 +37,7 @@ const GetStarted = (props: Props) => {
             <p className="mb-4 font-jost">
                 To apply, please send an email to
                 <span className="font-bold"> <a href="mailto:info@paperthoughts.org" className="text-orange-600 hover:text-orange-800">info@paperthoughts.org</a> </span>
-                with the subject line "Writer Application." Include the following in your application:
+                with the subject line &quot;Writer Application.&quot; Include the following in your application:
             </p>
 
             <ul className="list-disc list-inside mb-4 font-jost">
