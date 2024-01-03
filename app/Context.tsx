@@ -82,7 +82,6 @@ const Context = ({ children }: { children: ReactNode }) => {
     useEffect(() => {
         const unsubscribe = onAuthStateChanged(auth, async (currentUser: any) => {
             setUser(currentUser);
-
         });
 
         return () => unsubscribe();

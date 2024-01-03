@@ -15,8 +15,6 @@ const Navbar = (props: Props) => {
     const [loading, setLoading] = useState(true)
     const [searchValue, setSearchValue] = useState('')
 
-
-
     const createQueryString = (name: string, value: string) => {
         const params = new URLSearchParams();
         params.set(name, value);
@@ -38,17 +36,29 @@ const Navbar = (props: Props) => {
         checkAuthentication()
     }, [user])
 
+    const approvedEmails = ['sadiqbilyamin@gmail.com', 'seeker99157@gmail.com', 'weareveryoldkds@gmail.com', 'morganufuoma@gmail.com', 'isahnafisa616@gmail.com', 'deeehmkay@gmail.com'];
+
+    const isEmailApproved = (email: string): boolean => {
+        return approvedEmails.includes(email);
+    };
+
+    console.log(isEmailApproved(user?.email || ''));
+
+
     return (
         <nav className="font-headers fixed top-0 block w-full z-20 max-h-[72px] bg-white border-b border-b-gray-100 shadow-lg">
             <div className="max-w-7xl mx-auto flex  px-5 min-h-[72px] items-center bg-white border-b border-b-gray-100 font-medium ">
                 <div className="flex-1 flex justify-start">
                     {
-                        user ?
-                            <div><Link className=" link font-semibold lg:font-medium " href={'/write'}>Writes</Link></div> :
-                            <div><Link className=" link font-semibold lg:font-medium " href={'/login'}>Get Started</Link></div>
+                        user && isEmailApproved(user?.email) && <div><Link className=" link font-semibold lg:font-medium " href={'/write'}>Write</Link></div>
+                    }
+                    {
+                        user && !isEmailApproved(user?.email) && <div><Link className=" link font-semibold lg:font-medium " href={'/get-started'}>Get Started</Link></div>
+                    }
+                    {
+                        !user && <div><Link className=" link font-semibold lg:font-medium " href={'/login'}>Sign in</Link></div>
                     }
 
-                    {/* <div><Link className="md:hidden link font-semibold lg:font-medium" href={user && user.admin ? '/write' : '/get-started'}>{user && user.admin ? 'Write' : 'Get Started now'}</Link></div> */}
                 </div>
 
                 <Link href={'/'} className="flex-0">
