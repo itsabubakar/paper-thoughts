@@ -78,11 +78,12 @@ export default function Home() {
 
   return (
     <main>
-      <HeroSection />
+      {/* <HeroSection />
       <ArticleSection articles={articles} />
       <BookReviewSection bookReviews={bookReviews} />
       <ShortStorySection shortStories={shortStories} />
-      <PoemSection poems={poems} />
+      <PoemSection poems={poems} /> */}
+      <p>hello world</p>
     </main>
   )
 }
