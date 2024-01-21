@@ -19,7 +19,7 @@ const Page = (props: Props) => {
                     where emotions and ideas take flight through the rhythm and rhyme of language.
                     Our members come together to perform, listen, and appreciate poetry in all its
                     forms.</p>
-                <p className="pt-2 font-body"> Book reviews are also a cornerstone of our club's activities. We encourage
+                <p className="pt-2 font-body"> Book reviews are also a cornerstone of our club&apos;s activities. We encourage
                     critical thinking and lively discourse, as we dissect themes, characters, and
                     narratives, enriching our understanding and appreciation of Nigerian literature.</p>
 
