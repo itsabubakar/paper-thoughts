@@ -15,6 +15,12 @@ const Page = (props: Props) => {
                     type="Conference"
                 />
                 <Event
+                    type="Conference"
+                />
+                <Event
+                    type="Branch"
+                />
+                <Event
                     type="Workshop"
                 />
                 <Event
