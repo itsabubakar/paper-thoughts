@@ -78,12 +78,9 @@ export default function Home() {
 
   return (
     <main>
-      {/* <HeroSection />
-      <ArticleSection articles={articles} />
-      <BookReviewSection bookReviews={bookReviews} />
-      <ShortStorySection shortStories={shortStories} />
-      <PoemSection poems={poems} /> */}
+
       <p>hello world</p>
+      <p>lorem ipsum</p>
     </main>
   )
 }
